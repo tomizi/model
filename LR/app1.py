@@ -12,6 +12,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 from pathlib import Path
 
+os_path = Path(__file__).parents[0] / 'DoMod.csv'
 DF = pd.read_csv('C:\\Users\\User\\DoMod.csv')
 DF=DF.drop('Unnamed: 0',axis=1)
 DF['rok']=list(map(lambda x: x[:4],DF.Okres))
