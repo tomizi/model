@@ -64,13 +64,13 @@ fig.add_trace(go.Heatmap(z=cm,x=cols,y=cols,text=cm.round(2),texttemplate="%{tex
 fig.update_layout(#margin = dict(t=200,r=200,b=200,l=200),
     title = '<b>Macierz korelacji',title_x=0.5,title_font={"size":40},
     showlegend = False,
-    width = 700, height = 700,)
+    width = 900, height = 900,)
     #autosize = False )
 
 
 fig1 = px.scatter_matrix(DF_selection.iloc[:,2:])
 
-fig1.update_layout(width=700,height=700,title = '<b>Wykresy rozrzutu',title_x=0.5,title_font={"size":40},)#plot_bgcolor='#FFFFFF')
+fig1.update_layout(width=900,height=900,title = '<b>Wykresy rozrzutu',title_x=0.5,title_font={"size":40},)#plot_bgcolor='#FFFFFF')
 
 lc,rc = st.columns(2)
 lc.plotly_chart(fig)
