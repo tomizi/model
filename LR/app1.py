@@ -13,7 +13,8 @@ import plotly.graph_objects as go
 from pathlib import Path
 
 os_path = Path(__file__).parents[0] / 'DoMod.csv'
-DF = pd.read_csv('C:\\Users\\User\\DoMod.csv')
+with open(os_path, encoding="utf8", errors='ignore') as f:
+    DF = pd.read_csv(f,sep=';',header=0)
 DF=DF.drop('Unnamed: 0',axis=1)
 DF['rok']=list(map(lambda x: x[:4],DF.Okres))
 DF = DF.loc[:,['rok',*DF.columns[:-1]]]
