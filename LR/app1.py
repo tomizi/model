@@ -51,7 +51,7 @@ DF_selection= DF.query(
     
 st.dataframe(DF_selection.style.set_properties(**{'color': 'red'}, subset=['GRIPEX HOT        '],axis=0).set_properties(**{'color':'blue'},subset=DF.iloc[:,2:9].columns,axis=0))
 st.markdown('---')
-
+st.header(':large_blue_circle: Korelacja zmiennych')
 st.subheader('W celu sprawdzenia "mocy" zależnosci między poszczególnymi zmiennymi budujemy macierz korealacji. Na przecięciach kolumn z wierszami znajdują się wartosci współczyników korelacji liniowej - Pearsona. Liczba ta miesci się w zakresie od -1 do 1. Im ta liczba jest wieksza co do wartoci bezwzglednej tym zależnosc liniowa miedzy dwoma zmiennymi rosnie.'+
              ' Obok dla lepszego rozeznania widnieją wykresy rozrzutu. Są one potwierdzeniem na liniową zależnosć dla zmiennych z powyższymi warunkami.')
 
