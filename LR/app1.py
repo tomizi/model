@@ -120,7 +120,7 @@ model_new.fit(X_new,y)
 st.info('**Współczyniki równania regresji: '+str(round(model_new.coef_[0],3))+', '+str(round(model_new.coef_[1],3))+'**')
 # Wyraz wolny w rownaniu regresji
 st.info('**Wyraz wolny w równaniu regresji: '+str(round(model_new.intercept_,3))+'**')
-st.subheader('Wzrost zmiennej '+str(wybrane[0])+'o jedną jedonstkę powoduje zmianę wartosci GRIPEXU HOT o '+str(round(model_new.coef_[1],3))+', a wzrost zmiennej '+str(wybrane[1])+'o jedną jednostkę powoduję zmianę wartosci GRIPEXU HOT o '+str(round(model_new.coef_[1],3)))
+st.subheader('Wzrost zmiennej '+str(wybrane[0])+'o jedną jedonstkę powoduje zmianę wartosci GRIPEXU HOT o '+str(round(model_new.coef_[0],3))+', a wzrost zmiennej '+str(wybrane[1])+'o jedną jednostkę powoduję zmianę wartosci GRIPEXU HOT o '+str(round(model_new.coef_[1],3)))
 
 
 
