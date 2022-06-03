@@ -295,7 +295,7 @@ else:
     fig.add_trace(go.Scatter(
         x = df.Okres,
         y = df['Rolling_Mean'],
-        name = "Średnie kroczące",
+        name = "Średnia ruchoma",
         mode='lines+markers',
         line_color = 'gray',
         opacity = 0.8))
@@ -308,8 +308,86 @@ else:
     
     st.plotly_chart(fig,True)
     
+    st.markdown('---')
+    
+    # holt winters 
+    # single exponential smoothing
+    from statsmodels.tsa.holtwinters import SimpleExpSmoothing   
+    # double and triple exponential smoothing
+    from statsmodels.tsa.holtwinters import ExponentialSmoothing
+
+    df['HWES3_MUL'] = ExponentialSmoothing(df['GRIPEX HOT        '],trend='add',seasonal='add',seasonal_periods=6).fit().fittedvalues
+    
+    fig = go.Figure(layout =go.Layout(
+    xaxis = dict(showgrid=True,title='<b>Okres', ticklabelmode="period", dtick="M1", tickformat="%b\n%",tickangle=45,tickvals=list(dane.Okres.astype('string')),
+                            ticktext = dane.Okres.astype('string'),linecolor='black',tickwidth=1,tickcolor='black',ticks="outside"),
+    yaxis = dict(linecolor='black',title='<b>Ilość sprzedaży [tyś. sztuk]',tickwidth=1,tickcolor='black',ticks="outside",gridcolor='black')
+    ))
+    fig.add_trace(go.Scatter(
+        x = dane.Okres,
+        y = dane['GRIPEX HOT        '],
+        name = "GRIPEX HOT",
+        line_color = 'dodgerblue',
+        mode='lines+markers',
+        line_width=3
+        ))
+    fig.add_trace(go.Scatter(
+        x = df.Okres,
+        y = df['HWES3_MUL'],
+        name = "HWES3_MUL",
+        mode='lines+markers',
+        line_color = 'gray',
+        opacity = 0.8))
+
+    # Use string to set start xaxis range
+    fig.update_layout(plot_bgcolor='white',font=dict(
+            size=18,
+            color="Black"),title='<b>Sprzedaż ilościowa Gripexu Hot w podziale na miesiące',title_x=0.5)
     
     
+    t = []
+    for i in range(2022,2027):
+        for j in range(1,13):
+            if j>9:
+                t.append(str(i)+'-'+str(j))
+            else:
+                t.append(str(i)+'-'+'0'+str(j))
+    u = list(df.Okres.astype('string'))
+    okresy = u+t[2:]
+    okresy 
+    
+    
+    fig1 = go.Figure(layout =go.Layout(
+    xaxis = dict(showgrid=True,title='<b>Okres', ticklabelmode="period", dtick="M1", tickformat="%b\n%",tickangle=45,tickvals=okresy,
+                            ticktext = okresy,linecolor='black',tickwidth=1,tickcolor='black',ticks="outside"),
+    yaxis = dict(linecolor='black',title='<b>Ilość sprzedaży [tyś. sztuk]',tickwidth=1,tickcolor='black',ticks="outside",gridcolor='black')
+    ))
+    fig1.add_trace(go.Scatter(
+        x = okresy[:36],
+        y = df['GRIPEX HOT        '],
+        name = "GRIPEX HOT",
+        line_color = 'dodgerblue',
+        mode='lines+markers',
+        line_width=3
+        ))
+    fig1.add_trace(go.Scatter(
+        x = okresy[36:],
+        y = test_predictions.values,
+        name = "HWES3_MUL",
+        mode='lines+markers',
+        line_color = 'green',
+        opacity = 0.8))
+
+    # Use string to set start xaxis range
+    fig1.update_layout(plot_bgcolor='white',font=dict(
+            size=18,
+            color="Black"),title='<b>Sprzedaż ilościowa Gripexu Hot w podziale na miesiące',title_x=0.5)
+    
+    lc,rc = columns((1,3))
+    
+    st.header(':clock230: Model Holta Wintersa')
+    rc.plotly_chart(fig,True)
+    re.plotly_chart(fig1,True)
     
 
 
