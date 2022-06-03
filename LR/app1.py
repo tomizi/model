@@ -186,7 +186,7 @@ if Model == 'Uzupełnianie danych':
 else:
     st.title(':hourglass_flowing_sand: Model prognostyczny dla leków')
     st.header('Szeregi czasowe')
-    st.subheader('Szereg czasowy to ciąg obserwacji przedstawiający formowanie się danego zjawiska w kolejnych okresach czasu (dniach, miesiącach, kwartałach, latach). Polega na '+
+    st.subheader('Szereg czasowy to ciąg obserwacji przedstawiający formowanie się danego zjawiska w kolejnych okresach czasu (dniach, miesiącach, kwartałach, latach). '+
          'Modelem szeregu czasowego służącym do określenia przyszłej wartości zmiennej prognozowanej w momencie prognozowania jest model formalny, którego zmiennymi objaśniającymi mogą być tylko zmienne czasowe oraz przyszłe wartości lub otrzymane prognozy.')
     st.subheader('')
     st.markdown('---')
