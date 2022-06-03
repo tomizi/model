@@ -36,11 +36,10 @@ st.markdown('##')
 
 st.sidebar.header('Lata uwzględniane w modelu:')
 
-Model = st.sidebar.multiselect(
+Model = st.sidebar.radio(
     'Wybierz model',
-    options = ['Prognoza','Uzupełnianie danych'],
-    default = ['Prognoza','Uzupełnianie danych']
-)
+    ('Prognoza','Uzupełnianie danych')
+ )
 rok = st.sidebar.multiselect(
     "Wybierz rok:",
     options=DF['rok'].unique(),
