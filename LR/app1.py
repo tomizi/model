@@ -188,8 +188,8 @@ else:
     st.header('Szeregi czasowe')
     st.subheader('Szereg czasowy to ciąg obserwacji przedstawiający formowanie się danego zjawiska w kolejnych okresach czasu (dniach, miesiącach, kwartałach, latach). '+
          'Modelem szeregu czasowego służącym do określenia przyszłej wartości zmiennej prognozowanej w momencie prognozowania jest model formalny, którego zmiennymi objaśniającymi mogą być tylko zmienne czasowe oraz przyszłe wartości lub otrzymane prognozy.')
-    st.subheader('')
-    st.markdown('---')
+    st.subheader('Wykres poniżej przedstawia ilościową sprzedaż Gripexu Hot w poszczególnych miesiącach od marca 2019 do lutego 2022. Jest to przykład szeregu czasowego.')
+    
     fig = px.line(DF,x='Okres',y='GRIPEX HOT        ',markers=True,labels={'GRIPEX HOT        ':'<b>Ilość sprzedaży [tyś. sztuk]','Okres':'<b>Okres'})
     fig.update_xaxes(showgrid=True, ticklabelmode="period", dtick="M1", tickformat="%b\n%",tickangle=45,tickvals=list(DF.Okres.astype('string')),
                                 ticktext = DF.Okres.astype('string'),linecolor='black',tickwidth=1,tickcolor='black',ticks="outside")
@@ -197,8 +197,50 @@ else:
     fig.update_layout(plot_bgcolor='white',width = 1200, height = 500,font=dict(
         size=18,
         color="Black"))
- 
     st.plotly_chart(fig,True)
+             
+    st.markdown('---')
+    
+    
+    df  = DF[['Okres','GRIPEX HOT        ']]
+    df['Okres1'] = list(range(1,len(list(df.Okres))+1))
+    df = df.loc[:,['Okres1','Okres','GRIPEX HOT        ']]
+    
+    from sklearn.linear_model import LinearRegression
+    X = df.iloc[:,[0]]
+    y = df.iloc[:,2]
+    
+    model = LinearRegression()
+    model.fit(X,y)
+    
+    pred = model.predict(X)
+
+    fig = go.Figure(layout =go.Layout(
+    xaxis = dict(showgrid=True,title='<b>Okres', ticklabelmode="period", dtick="M1", tickformat="%b\n%",tickangle=45,tickvals=list(DF.Okres.astype('string')),
+                            ticktext = DF.Okres.astype('string'),linecolor='black',tickwidth=1,tickcolor='black',ticks="outside"),
+    yaxis = dict(linecolor='black',title='<b>Ilość sprzedaży [tyś. sztuk]',tickwidth=1,tickcolor='black',ticks="outside",gridcolor='black')
+    ))
+    fig.add_trace(go.Scatter(
+        x = dane.Okres,
+        y = dane['GRIPEX HOT        '],
+        name = "GRIPEX HOT",
+        line_color = 'red',
+        mode='lines+markers',
+        line_width=3
+        ))
+    fig.add_trace(go.Scatter(
+        x = df.Okres,
+        y = pred,
+        name = "Przewidziane wartości",
+        line_color = 'blue',
+        opacity = 0.8))
+
+    # Use string to set start xaxis range
+    fig.update_layout(plot_bgcolor='white',font=dict(
+            size=18,
+            color="Black"),title='<b>Sprzedaż ilościowa Gripexu Hot w podziale na miesiące',title_x=0.5)
+  
+                      
 
 
 
