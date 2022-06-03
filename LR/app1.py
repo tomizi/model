@@ -251,7 +251,7 @@ else:
     lc.write('**Błąd średniokwadratowy:**')
     lc.warning('**RMSE: '+str(round(RMSE,3))+'**')
     lc.write('**Współczynnik determinacji**')
-    lc.info(r'R^2 = '+str(round(model.score(X,y),3)))
+    lc.info(r'$$R^2$$'+' = '+str(round(model.score(X,y),3)))
     rc.plotly_chart(fig,True)                 
 
 
