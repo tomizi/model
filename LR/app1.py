@@ -324,8 +324,8 @@ else:
     yaxis = dict(linecolor='black',title='<b>Ilość sprzedaży [tyś. sztuk]',tickwidth=1,tickcolor='black',ticks="outside",gridcolor='black')
     ))
     fig.add_trace(go.Scatter(
-        x = dane.Okres,
-        y = dane['GRIPEX HOT        '],
+        x = df.Okres,
+        y = df['GRIPEX HOT        '],
         name = "GRIPEX HOT",
         line_color = 'dodgerblue',
         mode='lines+markers',
