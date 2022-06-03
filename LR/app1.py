@@ -35,9 +35,9 @@ rok = st.sidebar.multiselect(
     options=DF['rok'].unique(),
     default=['2019','2021']
     )
-
+st.set_page_config(page_title='Model prognostyczny dla leków', page_icon = ':bar_chart:', layout='wide')
 if Model == 'Uzupełnianie danych':
-    st.set_page_config(page_title='Model prognostyczny dla leków', page_icon = ':bar_chart:', layout='wide')
+    
     st.title(':chart_with_upwards_trend: Model prognostyczny dla leków')
     st.header('Regresja wieloraka')
     st.subheader('Jest to metoda pozwalająca szacować wartosci danej wielkosci za pomocą znanych już wartosci innych wielkosci. Polega na '+
