@@ -232,11 +232,12 @@ else:
         x = df.Okres,
         y = pred,
         name = "Przewidziane wartości",
+        mode='lines+markers',
         line_color = 'blue',
         opacity = 0.8))
 
     # Use string to set start xaxis range
-    fig.update_layout(plot_bgcolor='white',font=dict(
+    fig.update_layout(plot_bgcolor='white',height=600,font=dict(
             size=18,
             color="Black"),title='<b>Sprzedaż ilościowa Gripexu Hot w podziale na miesiące',title_x=0.5)
     from sklearn.metrics import mean_squared_error
