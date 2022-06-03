@@ -22,18 +22,8 @@ for i in range(2,len(DF.columns)):
     DF.iloc[:,i]=DF.iloc[:,i].astype('int')
 
 
-DF.info()
-'''
-st.set_page_config(page_title='Model prognostyczny dla leków', page_icon = ':bar_chart:',
-                  layout='wide')
 
-st.title(':chart_with_upwards_trend: Model prognostyczny dla leków')
-st.header('Regresja wieloraka')
-st.subheader('Jest to metoda pozwalająca szacować wartosci danej wielkosci za pomocą znanych już wartosci innych wielkosci. Polega na '+
-         'przedstawieniu w postaci równania liniowego zależnoci zmiennej objasnianej w oparciu o zmienne objasniające. Poniżej znajdują się dane w postaci tabelarycznej użyte do budowy modelu. Przedstawiają one ilosc sprzedaży danego leku w poszczególnych miesiącach od marca 2019 do lutego 2022.')
-st.subheader('Dwie pierwsze kolumny to zmienne identyfikujące. Kolejnych siedem to zmiennej objasniajace (kolor niebieski). Ostatnia kolumna (kolor czerwony) przedstawia zmienną, której wartosci będziemy szacować - zmienna objasniana. Chcemy przewidywać ilosć sprzedaży Gripexu Hot w kolejnych miesiącach na podstawie wybranych leków tego samego typu.')
-st.markdown('##')
-'''
+
 st.sidebar.header('Lata uwzględniane w modelu:')
 
 Model = st.sidebar.radio(
@@ -47,16 +37,14 @@ rok = st.sidebar.multiselect(
     )
 
 if Model == 'Uzupełnianie danych':
-    st.set_page_config(page_title='Model prognostyczny dla leków', page_icon = ':bar_chart:',
-                  layout='wide')
+    st.set_page_config(page_title='Model prognostyczny dla leków', page_icon = ':bar_chart:', layout='wide')
     st.title(':chart_with_upwards_trend: Model prognostyczny dla leków')
     st.header('Regresja wieloraka')
     st.subheader('Jest to metoda pozwalająca szacować wartosci danej wielkosci za pomocą znanych już wartosci innych wielkosci. Polega na '+
              'przedstawieniu w postaci równania liniowego zależnoci zmiennej objasnianej w oparciu o zmienne objasniające. Poniżej znajdują się dane w postaci tabelarycznej użyte do budowy modelu. Przedstawiają one ilosc sprzedaży danego leku w poszczególnych miesiącach od marca 2019 do lutego 2022.')
     st.subheader('Dwie pierwsze kolumny to zmienne identyfikujące. Kolejnych siedem to zmiennej objasniajace (kolor niebieski). Ostatnia kolumna (kolor czerwony) przedstawia zmienną, której wartosci będziemy szacować - zmienna objasniana. Chcemy przewidywać ilosć sprzedaży Gripexu Hot w kolejnych miesiącach na podstawie wybranych leków tego samego typu.')
     st.markdown('##')
-
-    st.sidebar.header('Lata uwzględniane w modelu:')
+    
     DF_selection= DF.query(
         "rok == @rok")
     #.style.set_properties(**{'color': 'blue'}, subset=['GRIPEX HOT        '],axis=0)
