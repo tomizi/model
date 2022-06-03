@@ -389,7 +389,7 @@ else:
     
     st.header(':clock230: Model Holta Wintersa')
     rc.plotly_chart(fig,True)
-    re.plotly_chart(fig1,True)
+    rc.plotly_chart(fig1,True)
     
 
 
