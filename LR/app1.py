@@ -35,7 +35,7 @@ rok = st.sidebar.multiselect(
     default=['2019','2021']
     )
 if Model == 'Uzupełnianie danych':
-    st.title(':chart_with_upwards_trend: Model prognostyczny dla leków')
+    st.title(':chart_with_upwards_trend: Model uzupełniający dane dla leków')
     st.header('Regresja wieloraka')
     st.subheader('Jest to metoda pozwalająca szacować wartosci danej wielkosci za pomocą znanych już wartosci innych wielkosci. Polega na '+
          'przedstawieniu w postaci równania liniowego zależnoci zmiennej objasnianej w oparciu o zmienne objasniające. Poniżej znajdują się dane w postaci tabelarycznej użyte do budowy modelu. Przedstawiają one ilosc sprzedaży danego leku w poszczególnych miesiącach od marca 2019 do lutego 2022.')
@@ -173,7 +173,7 @@ if Model == 'Uzupełnianie danych':
     st.plotly_chart(fig2,True)
 
     st.markdown('---')
-    st.header('Prognoza na najbliższe miesiące')
+    st.header('Szacowanie na podstawie danych z wybranego miesiąca')
 
     def Lek_pred(lek1,lek2):
         return round(lek1*model_new.coef_[0] + lek2*model_new.coef_[1] + model_new.intercept_,3)
@@ -190,7 +190,7 @@ else:
          'Modelem szeregu czasowego służącym do określenia przyszłej wartości zmiennej prognozowanej w momencie prognozowania jest model formalny, którego zmiennymi objaśniającymi mogą być tylko zmienne czasowe oraz przyszłe wartości lub otrzymane prognozy.')
     st.subheader('')
     st.markdown('---')
-    fig = px.line(DF,x='Okres',y='GRIPEX HOT        ',markers=True)
+    fig = px.line(DF,x='Okres',y='GRIPEX HOT        ',markers=True,labels={'GRIPEX HOT        ':'Ilość sprzedaży [tyś. sztuk]')
     fig.update_xaxes(showgrid=True, ticklabelmode="period", dtick="M1", tickformat="%b\n%",tickangle=45,tickvals=list(DF.Okres.astype('string')),
                                 ticktext = DF.Okres.astype('string'),linecolor='gray',tickwidth=1,tickcolor='gray',ticks="outside")
     fig.update_yaxes(linecolor='gray',tickwidth=1,tickcolor='gray',ticks="outside")
