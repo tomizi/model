@@ -191,7 +191,7 @@ else:
     st.subheader('')
     st.markdown('---')
     fig = px.line(DF,x='Okres',y='GRIPEX HOT        ',markers=True)
-    fig.update_xaxes(showgrid=True, ticklabelmode="period", dtick="M1", tickformat="%b\n%",tickangle=45,tickvals=list(dane.Okres.astype('string')),
+    fig.update_xaxes(showgrid=True, ticklabelmode="period", dtick="M1", tickformat="%b\n%",tickangle=45,tickvals=list(DF.Okres.astype('string')),
                                 ticktext = dane.Okres.astype('string'),linecolor='gray',tickwidth=1,tickcolor='gray',ticks="outside")
     fig.update_yaxes(linecolor='gray',tickwidth=1,tickcolor='gray',ticks="outside")
     fig.update_layout(plot_bgcolor='white')
