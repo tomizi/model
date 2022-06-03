@@ -319,8 +319,8 @@ else:
     df['HWES3_MUL'] = ExponentialSmoothing(df['GRIPEX HOT        '],trend='add',seasonal='add',seasonal_periods=6).fit().fittedvalues
     
     fig = go.Figure(layout =go.Layout(
-    xaxis = dict(showgrid=True,title='<b>Okres', ticklabelmode="period", dtick="M1", tickformat="%b\n%",tickangle=45,tickvals=list(dane.Okres.astype('string')),
-                            ticktext = dane.Okres.astype('string'),linecolor='black',tickwidth=1,tickcolor='black',ticks="outside"),
+    xaxis = dict(showgrid=True,title='<b>Okres', ticklabelmode="period", dtick="M1", tickformat="%b\n%",tickangle=45,tickvals=list(df.Okres.astype('string')),
+                            ticktext = list(df.Okres.astype('string')),linecolor='black',tickwidth=1,tickcolor='black',ticks="outside"),
     yaxis = dict(linecolor='black',title='<b>Ilość sprzedaży [tyś. sztuk]',tickwidth=1,tickcolor='black',ticks="outside",gridcolor='black')
     ))
     fig.add_trace(go.Scatter(
