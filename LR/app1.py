@@ -35,7 +35,7 @@ rok = st.sidebar.multiselect(
     default=['2019','2021']
     )
 if Model == 'Uzupełnianie danych':
-    st.title(':chart_with_upwards_trend: Model uzupełniający dane dla leków')
+    st.title(':bar_chart: Model uzupełniający dane dla leków')
     st.header('Regresja wieloraka')
     st.subheader('Jest to metoda pozwalająca szacować wartosci danej wielkosci za pomocą znanych już wartosci innych wielkosci. Polega na '+
          'przedstawieniu w postaci równania liniowego zależnoci zmiennej objasnianej w oparciu o zmienne objasniające. Poniżej znajdują się dane w postaci tabelarycznej użyte do budowy modelu. Przedstawiają one ilosc sprzedaży danego leku w poszczególnych miesiącach od marca 2019 do lutego 2022.')
@@ -184,7 +184,7 @@ if Model == 'Uzupełnianie danych':
     lek2 = rc1.number_input('Podaj ilosć sprzedaży drugiego leku - '+str(wybrane[1])+': ',value=0,step=100)
     st.subheader(f'\t Przewidziana ilosć sprzedaży GRIPEXU HOT wynosi: {Lek_pred(lek1,lek2)}')
 else:
-    st.title(':soon: Model prognostyczny dla leków')
+    st.title(':chart_with_upwards_trend: Model prognostyczny dla leków')
     st.header('Szeregi czasowe')
     st.subheader('Szereg czasowy to ciąg obserwacji przedstawiający formowanie się danego zjawiska w kolejnych okresach czasu (dniach, miesiącach, kwartałach, latach). '+
          'Modelem szeregu czasowego służącym do określenia przyszłej wartości zmiennej prognozowanej w momencie prognozowania jest model formalny, którego zmiennymi objaśniającymi mogą być tylko zmienne czasowe oraz przyszłe wartości lub otrzymane prognozy.')
