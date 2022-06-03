@@ -274,6 +274,6 @@ else:
         for i in t:
             if i[0] == m and i[1] == r:
                 return i[2]
-    st.subheader('Przewidziana ilość sprzedaży w '+str(m)+'-'+str(r)+' to: '+str(model.predict([[szukaj(m,r)][0]])))
+    st.subheader('Przewidziana ilość sprzedaży w '+str(m)+'-'+str(r)+' to: '+str(model.predict([[szukaj(m,r)]])[0]))
 
 
