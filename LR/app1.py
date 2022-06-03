@@ -190,7 +190,7 @@ else:
          'Modelem szeregu czasowego służącym do określenia przyszłej wartości zmiennej prognozowanej w momencie prognozowania jest model formalny, którego zmiennymi objaśniającymi mogą być tylko zmienne czasowe oraz przyszłe wartości lub otrzymane prognozy.')
     st.subheader('')
     st.markdown('---')
-    fig = px.line(DF,x='Okres',y='GRIPEX HOT        ',markers=True,labels={'y':'Ilość sprzedaży [tyś. sztuk]')
+    fig = px.line(DF,x='Okres',y='GRIPEX HOT        ',markers=True,labels={'GRIPEX HOT        ':'Ilość sprzedaży [tyś. sztuk]'})
     fig.update_xaxes(showgrid=True, ticklabelmode="period", dtick="M1", tickformat="%b\n%",tickangle=45,tickvals=list(DF.Okres.astype('string')),
                                 ticktext = DF.Okres.astype('string'),linecolor='gray',tickwidth=1,tickcolor='gray',ticks="outside")
     fig.update_yaxes(linecolor='gray',tickwidth=1,tickcolor='gray',ticks="outside")
