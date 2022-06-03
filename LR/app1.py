@@ -249,9 +249,9 @@ else:
     lc.write('**Równanie:**')
     lc.success('**Ilość = '+str(round(model.coef_[0],3))+'*'+'Okres + '+str(round(model.intercept_,3))+'**')
     lc.write('**Błąd średniokwadratowy:**')
-    lc.warning('**RMSE: '+str(RMSE)+'**')
+    lc.warning('**RMSE: '+str(round(RMSE,3))+'**')
     lc.write('**Współczynnik determinacji**')
-    lc.latex(r'R^2')
+    lc.info.latex(r'R^2 = '+str(round(model.score(X,y),3)))
     rc.plotly_chart(fig,True)                 
 
 
