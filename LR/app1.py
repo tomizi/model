@@ -239,12 +239,19 @@ else:
     fig.update_layout(plot_bgcolor='white',font=dict(
             size=18,
             color="Black"),title='<b>Sprzedaż ilościowa Gripexu Hot w podziale na miesiące',title_x=0.5)
+    from sklearn.metrics import mean_squared_error
+    MSE=mean_squared_error(y, pred)
+    RMSE=np.sqrt(MSE)
     
     st.header(':clock10: Model trendu liniowego')
     lc,rc = st.columns((1,2))
     lc.subheader('Do budowy modelu urzywamy funkcji liniowej.')
     lc.write('**Równanie:**')
     lc.success('**Ilość = '+str(round(model.coef_[0],3))+'*'+'Okres + '+str(round(model.intercept_,3))+'**')
+    lc.write('**Błąd średniokwadratowy:**')
+    lc.warning('**RMSE: '+str(RMSE)+'**')
+    lc.write('**Współczynnik determinacji**')
+    lc.latex(r'R^2')
     rc.plotly_chart(fig,True)                 
 
 
