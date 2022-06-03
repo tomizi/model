@@ -270,9 +270,9 @@ else:
             t.append([j,i,a])
             a+=1
     def szukaj(m,r):
-    for i in t:
-        if i[0] == m and i[1] == r:
-            return i[2]
+        for i in t:
+            if i[0] == m and i[1] == r:
+                return i[2]
     st.subheader('Przewidziana ilość sprzedaży w '+str(m)+'-'+str(r)+' to: '+str(model.predict([[szukaj(m,r)]])
 
 
