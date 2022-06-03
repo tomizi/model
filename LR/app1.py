@@ -244,7 +244,7 @@ else:
     lc,rc = st.columns((1,2))
     lc.subheader('Do budowy modelu urzywamy funkcji liniowej.')
     lc.subheader('Równanie:')
-    lc.succes('Ilość = '+str(model.coef_[0])+'*/'+'Okres + '+str(model.intercept_))
+    lc.success('Ilość = '+str(model.coef_[0])+'*/'+'Okres + '+str(model.intercept_))
     rc.plotly_chart(fig,True)                 
 
 
