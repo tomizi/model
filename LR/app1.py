@@ -245,8 +245,9 @@ else:
     RMSE=np.sqrt(MSE)
     
     st.header(':clock10: Model trendu liniowego')
-    lc,rc = st.columns((1,4))
     st.subheader('Do budowy modelu urzywamy funkcji liniowej. Wykres przedstawia sprzedaż ilościową Gripexu Hot wraz z linią trendu.')
+    
+    lc,rc = st.columns((1,4))
     lc.write('**Równanie:**')
     lc.success('**Ilość = '+str(round(model.coef_[0],3))+'*'+'Okres + '+str(round(model.intercept_,3))+'**')
     lc.write('**Błąd średniokwadratowy:**')
