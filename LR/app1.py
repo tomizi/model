@@ -239,9 +239,9 @@ else:
     fig.update_layout(plot_bgcolor='white',font=dict(
             size=18,
             color="Black"),title='<b>Sprzedaż ilościowa Gripexu Hot w podziale na miesiące',title_x=0.5)
-   
-    lc,rc = st.columns(2)
+    
     st.header(':clock10: Regresja przy urzyciu funkcji liniowej')
+    lc,rc = st.columns((1,2))
     lc.subheader('blblbl')
     rc.plotly_chart(fig,True)                 
 
