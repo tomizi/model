@@ -255,7 +255,7 @@ else:
     lc.info('**'+r'$$R^2$$'+' = '+str(round(model.score(X,y),3))+'**')
     rc.plotly_chart(fig,True)   
     container = lc.container()
-    lc1,md1,rc1 = st.columns((1,1,1))
+    lc1,md1,rc1 = st.columns((1,2,2))
     m,r = md1.number_input('Podaj miesiąc: '),rc1.number_input('Podaj rok: ')
     #model.predict([[37]
 
