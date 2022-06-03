@@ -245,7 +245,7 @@ else:
     RMSE=np.sqrt(MSE)
     
     st.header(':clock10: Model trendu liniowego')
-    lc,rc = st.columns((1,2))
+    lc,rc = st.columns((1,4))
     lc.subheader('Do budowy modelu urzywamy funkcji liniowej.')
     lc.write('**Równanie:**')
     lc.success('**Ilość = '+str(round(model.coef_[0],3))+'*'+'Okres + '+str(round(model.intercept_,3))+'**')
@@ -255,8 +255,8 @@ else:
     lc.info('**'+r'$$R^2$$'+' = '+str(round(model.score(X,y),3))+'**')
     rc.plotly_chart(fig,True)   
     container = lc.container()
-    lc1,md1,rc1 = st.columns((1,2,2))
-    m,r = md1.number_input('Podaj miesiąc: '),rc1.number_input('Podaj rok: ')
+    lc1,rc1 = st.columns((2,2))
+    m,r = lc1.number_input('Podaj miesiąc: ',min_value=1,max_value=12,step=1),rc1.number_input('Podaj rok: ',min_value=2022,max_value=2026,step=1)
     #model.predict([[37]
 
 
