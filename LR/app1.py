@@ -195,8 +195,7 @@ else:
                                 ticktext = DF.Okres.astype('string'),linecolor='black',tickwidth=1,tickcolor='black',ticks="outside")
     fig.update_yaxes(linecolor='black',tickwidth=1,tickcolor='black',ticks="outside")
     fig.update_layout(plot_bgcolor='white',width = 1200, height = 500,font=dict(
-        family="Courier New, monospace",
-        size=18,
+        size=12,
         color="Black"))
  
     st.plotly_chart(fig,True)
