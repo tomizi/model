@@ -231,7 +231,7 @@ else:
     fig.add_trace(go.Scatter(
         x = df.Okres,
         y = pred,
-        name = "Przewidziane wartości",
+        name = "Linia trendu",
         mode='lines+markers',
         line_color = 'blue',
         opacity = 0.8))
@@ -253,7 +253,9 @@ else:
     lc.warning('**RMSE: '+str(round(RMSE,3))+'**')
     lc.write('**Współczynnik determinacji**')
     lc.info('**'+r'$$R^2$$'+' = '+str(round(model.score(X,y),3))+'**')
-    rc.plotly_chart(fig,True)                 
-
+    rc.plotly_chart(fig,True)   
+    lc1,rc1 = st.columns((1,1))
+    m,r = lc.number_input('Podaj miesiąc: '),lc.number_input('Podaj rok: ')
+    #model.predict([[37]
 
 
