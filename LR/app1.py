@@ -249,6 +249,8 @@ else:
     
     lc,rc = st.columns((1,3))
     lc.markdown('###')
+    lc.markdown('###')
+    lc.markdown('###')
     lc.write('**Równanie:**')
     lc.success('**Ilość = '+str(round(model.coef_[0],3))+'*'+'Okres + '+str(round(model.intercept_,3))+'**')
     lc.write('**Błąd średniokwadratowy:**')
