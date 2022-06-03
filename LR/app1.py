@@ -195,7 +195,7 @@ else:
                                 ticktext = dane.Okres.astype('string'),linecolor='gray',tickwidth=1,tickcolor='gray',ticks="outside")
     fig.update_yaxes(linecolor='gray',tickwidth=1,tickcolor='gray',ticks="outside")
     fig.update_layout(plot_bgcolor='white')
-    fig.show()
+ 
     st.plotly_chart(fig,True)
 
 
