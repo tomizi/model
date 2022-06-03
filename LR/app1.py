@@ -240,9 +240,11 @@ else:
             size=18,
             color="Black"),title='<b>Sprzedaż ilościowa Gripexu Hot w podziale na miesiące',title_x=0.5)
     
-    st.header(':clock10: Regresja przy urzyciu funkcji liniowej')
+    st.header(':clock10: Model trendu liniowego')
     lc,rc = st.columns((1,2))
-    lc.subheader('blblbl')
+    lc.subheader('Do budowy modelu urzywamy funkcji liniowej.')
+    lc.subheader('Równanie:')
+    lc.succes('Ilość = '+str(model.coef_[0])+'*/'+'Okres + '+str(model.intercept_))
     rc.plotly_chart(fig,True)                 
 
 
