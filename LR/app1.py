@@ -253,6 +253,7 @@ else:
     lc.warning('**RMSE: '+str(round(RMSE,3))+'**')
     lc.write('**Współczynnik determinacji**')
     lc.info('**'+r'$$R^2$$'+' = '+str(round(model.score(X,y),3))+'**')
+    rc.subheader('Wykres przedstawia sprzedaż ilościową Gripexu Hot wraz z linią trendu.')
     rc.plotly_chart(fig,True)   
     container = lc.container()
     lc1,rc1 = st.columns((2,2))
