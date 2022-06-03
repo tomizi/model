@@ -184,7 +184,7 @@ if Model == 'Uzupełnianie danych':
     lek2 = rc1.number_input('Podaj ilosć sprzedaży drugiego leku - '+str(wybrane[1])+': ',value=0,step=100)
     st.subheader(f'\t Przewidziana ilosć sprzedaży GRIPEXU HOT wynosi: {Lek_pred(lek1,lek2)}')
 else:
-    st.title(':hourglass_flowing_sand: Model prognostyczny dla leków')
+    st.title(':soon: Model prognostyczny dla leków')
     st.header('Szeregi czasowe')
     st.subheader('Szereg czasowy to ciąg obserwacji przedstawiający formowanie się danego zjawiska w kolejnych okresach czasu (dniach, miesiącach, kwartałach, latach). '+
          'Modelem szeregu czasowego służącym do określenia przyszłej wartości zmiennej prognozowanej w momencie prognozowania jest model formalny, którego zmiennymi objaśniającymi mogą być tylko zmienne czasowe oraz przyszłe wartości lub otrzymane prognozy.')
@@ -239,8 +239,11 @@ else:
     fig.update_layout(plot_bgcolor='white',font=dict(
             size=18,
             color="Black"),title='<b>Sprzedaż ilościowa Gripexu Hot w podziale na miesiące',title_x=0.5)
-  
-    st.plotly_chart(fig,True)                 
+   
+    lc,rc = st.columns(2)
+    st.header(':clock10: Regresja przy urzyciu funkcji liniowej')
+    lc.subheader('blblbl')
+    rc.plotly_chart(fig,True)                 
 
 
 
