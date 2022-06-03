@@ -354,8 +354,10 @@ else:
                 t.append(str(i)+'-'+'0'+str(j))
     u = list(df.Okres.astype('string'))
     okresy = u+t[2:]
-    okresy 
+
     
+    fitted_model = ExponentialSmoothing(df['GRIPEX HOT        '],seasonal='mul',seasonal_periods=6).fit()
+    test_predictions = fitted_model.forecast(36) 
     
     fig1 = go.Figure(layout =go.Layout(
     xaxis = dict(showgrid=True,title='<b>Okres', ticklabelmode="period", dtick="M1", tickformat="%b\n%",tickangle=45,tickvals=okresy,
