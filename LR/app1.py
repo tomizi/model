@@ -246,7 +246,7 @@ else:
     
     st.header(':clock10: Model trendu liniowego')
     st.subheader('Do budowy modelu urzywamy funkcji liniowej. Wykres przedstawia sprzedaż ilościową Gripexu Hot wraz z linią trendu.')
-    lc.markdown('###')
+    st.markdown('###')
     lc,rc = st.columns((1,3))
     
     lc.markdown('###')
@@ -258,8 +258,8 @@ else:
     lc.write('**Współczynnik determinacji**')
     lc.info('**'+r'$$R^2$$'+' = '+str(round(model.score(X,y),3))+'**')
     rc.plotly_chart(fig,True)
-    lc.markdown('###')
-    lc.markdown('###')
+    st.markdown('###')
+    st.markdown('###')
     lc1,rc1 = st.columns((2,2))
     m,r = lc1.number_input('Podaj miesiąc: ',min_value=1,max_value=12,step=1),rc1.number_input('Podaj rok: ',min_value=2022,max_value=2026,step=1)
     #model.predict([[37]
