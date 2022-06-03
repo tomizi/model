@@ -275,5 +275,41 @@ else:
             if i[0] == m and i[1] == r:
                 return i[2]
     st.subheader('Przewidziana ilość sprzedaży w '+str(int(m))+'-'+str(int(r))+' to: '+str(model.predict([[szukaj(m,r)]])[0]))
+    
+    st.markdown('---')
+    df['Rolling_Mean'] = df.iloc[:,2].rolling(6).mean()
+    
+    fig = go.Figure(layout =go.Layout(
+    xaxis = dict(showgrid=True,title='<b>Okres', ticklabelmode="period", dtick="M1", tickformat="%b\n%",tickangle=45,tickvals=list(df.Okres.astype('string')),
+                            ticktext = df.Okres.astype('string'),linecolor='black',tickwidth=1,tickcolor='black',ticks="outside"),
+    yaxis = dict(linecolor='black',title='<b>Ilość sprzedaży [tyś. sztuk]',tickwidth=1,tickcolor='black',ticks="outside",gridcolor='black')
+    ))
+    fig.add_trace(go.Scatter(
+        x = df.Okres,
+        y = df['GRIPEX HOT        '],
+        name = "GRIPEX HOT",
+        line_color = 'dodgerblue',
+        mode='lines+markers',
+        line_width=3
+        ))
+    fig.add_trace(go.Scatter(
+        x = df.Okres,
+        y = df['Rolling_Mean'],
+        name = "Średnie kroczące",
+        mode='lines+markers',
+        line_color = 'gray',
+        opacity = 0.8))
+
+    # Use string to set start xaxis range
+    fig.update_layout(plot_bgcolor='white',font=dict(
+            size=18,
+            color="Black"),title='<b>Sprzedaż ilościowa Gripexu Hot w podziale na miesiące',title_x=0.5)
+    st.header(':clock3: Metoda średniej ruchomej')
+    
+    st.plotly_chart(fig,True)
+    
+    
+    
+    
 
 
