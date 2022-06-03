@@ -253,8 +253,7 @@ else:
     lc.warning('**RMSE: '+str(round(RMSE,3))+'**')
     lc.write('**Współczynnik determinacji**')
     lc.info('**'+r'$$R^2$$'+' = '+str(round(model.score(X,y),3))+'**')
-    rc.markdown("<h1 style='text-align: center;size = 5; color: black;'>Wykres przedstawia sprzedaż ilościową Gripexu Hot wraz z linią trendu.</h1>", unsafe_allow_html=True)
-    
+    rc.subheader('    Wykres przedstawia sprzedaż ilościową Gripexu Hot wraz z linią trendu.')
     rc.plotly_chart(fig,True)   
     lc1,rc1 = st.columns((2,2))
     m,r = lc1.number_input('Podaj miesiąc: ',min_value=1,max_value=12,step=1),rc1.number_input('Podaj rok: ',min_value=2022,max_value=2026,step=1)
