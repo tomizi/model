@@ -254,8 +254,9 @@ else:
     lc.write('**Współczynnik determinacji**')
     lc.info('**'+r'$$R^2$$'+' = '+str(round(model.score(X,y),3))+'**')
     rc.plotly_chart(fig,True)   
+    container = lc.container()
     lc1,rc1 = st.columns((1,1))
-    m,r = lc.number_input('Podaj miesiąc: '),lc.number_input('Podaj rok: ')
+    m,r = lc1.container.number_input('Podaj miesiąc: '),rc1.container.number_input('Podaj rok: ')
     #model.predict([[37]
 
 
