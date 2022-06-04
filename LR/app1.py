@@ -370,7 +370,7 @@ else:
     
     fig1 = go.Figure(layout =go.Layout(
     xaxis = dict(showgrid=True,tickfont=dict(size=14),title='<b>Okres', ticklabelmode="period", dtick="M1", tickformat="%b\n%",tickangle=45,tickvals=okresy[:72],
-                            ticktext = okresy[:72],linecolor='black',tickwidth=1,tickcolor='black',ticks="outside"),
+                            ticktext = okresy[:72],linecolor='black',tickwidth=1,tickcolor=['black']*36+['green']*36,ticks="outside"),
     yaxis = dict(linecolor='black',title='<b>Ilość sprzedaży [tyś. sztuk]',tickwidth=1,tickcolor='black',ticks="outside",gridcolor='black')
     ))
     fig1.add_trace(go.Scatter(
@@ -386,7 +386,7 @@ else:
         y = test_predictions.values,
         name = "HWES",
         mode='lines+markers',
-        line_color = 'green',xaxis = dict(tickcolor='green'),
+        line_color = 'green',
         opacity = 0.8))
 
     # Use string to set start xaxis range
