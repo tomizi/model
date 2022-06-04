@@ -356,12 +356,12 @@ else:
     okresy = u+t[2:]
 
     
-    fitted_model = ExponentialSmoothing(df['GRIPEX HOT        '],seasonal='mul',seasonal_periods=6).fit()
+    fitted_model = ExponentialSmoothing(df['GRIPEX HOT        '],trend='add',seasonal='add',seasonal_periods=6).fit()
     test_predictions = fitted_model.forecast(36) 
     
     fig1 = go.Figure(layout =go.Layout(
-    xaxis = dict(showgrid=True,title='<b>Okres', ticklabelmode="period", dtick="M1", tickformat="%b\n%",tickangle=45,tickvals=okresy,
-                            ticktext = okresy,linecolor='black',tickwidth=1,tickcolor='black',ticks="outside"),
+    xaxis = dict(showgrid=True,tickfont=dict(size=10),title='<b>Okres', ticklabelmode="period", dtick="M1", tickformat="%b\n%",tickangle=45,tickvals=okresy[:72],
+                            ticktext = okresy[:72],linecolor='black',tickwidth=1,tickcolor='black',ticks="outside"),
     yaxis = dict(linecolor='black',title='<b>Ilość sprzedaży [tyś. sztuk]',tickwidth=1,tickcolor='black',ticks="outside",gridcolor='black')
     ))
     fig1.add_trace(go.Scatter(
