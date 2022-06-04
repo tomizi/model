@@ -363,7 +363,7 @@ else:
         ))
     fig.add_trace(go.Scatter(
         x = df.Okres,
-        y = df['HWES3_MUL'],
+        y = df['HWES'],
         name = "HWES",
         mode='lines+markers',
         line_color = 'gray',
