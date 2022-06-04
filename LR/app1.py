@@ -416,6 +416,12 @@ else:
     tab = list(df.iloc[[34,35],2]) + list(test_predictions.values)
     tab
     str(tab[szukaj(a1,b1)])
+    a = 0
+    t = []
+    for i in range(2022,2027):
+        for j in range(1,13):
+            t.append([j,i,a])
+            a+=1
     def szukaj(m,r):
         for i in t:
             if i[0] == m and i[1] == r:
