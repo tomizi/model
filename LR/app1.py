@@ -341,7 +341,7 @@ else:
     fig.add_trace(go.Scatter(
         x = df.Okres,
         y = df['HWES3_MUL'],
-        name = "HWES3_MUL",
+        name = "HWES",
         mode='lines+markers',
         line_color = 'gray',
         opacity = 0.8))
@@ -349,7 +349,7 @@ else:
     # Use string to set start xaxis range
     fig.update_layout(plot_bgcolor='white',font=dict(
             size=18,
-            color="Black"),title='<b>Sprzedaż ilościowa Gripexu Hot w podziale na miesiące',title_x=0.5)
+            color="Black"),title='<b>Sprzedaż ilościowa Gripexu Hot - prognozy vs. rzeczywistość',title_x=0.5)
     
     
     t = []
@@ -382,7 +382,7 @@ else:
     fig1.add_trace(go.Scatter(
         x = okresy[36:],
         y = test_predictions.values,
-        name = "HWES3_MUL",
+        name = "HWES",
         mode='lines+markers',
         line_color = 'green',
         opacity = 0.8))
@@ -390,7 +390,7 @@ else:
     # Use string to set start xaxis range
     fig1.update_layout(plot_bgcolor='white',font=dict(
             size=18,
-            color="Black"),title='<b>Sprzedaż ilościowa Gripexu Hot w podziale na miesiące',title_x=0.5)
+            color="Black"),title='<b>Prognoza sprzedaży ilościowej przy urzyciu modelu Holta-Wintersa',title_x=0.5)
     
     
    
