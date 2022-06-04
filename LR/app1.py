@@ -315,8 +315,15 @@ else:
     from statsmodels.tsa.holtwinters import SimpleExpSmoothing   
     # double and triple exponential smoothing
     from statsmodels.tsa.holtwinters import ExponentialSmoothing
+    
+    st.header(':clock230: Model Holta Wintersa')
+    lc,rc = st.columns((1,3))
+    lc.subheader('Model Holta-Wintersa jest jedną z technik prognozowania wykorzystujących tzw. wygładzenie wykładnicze. Wygładzenie polega na stworzeniu ważonej średniej ruchomej, której wagi określa się według schematu - im starsza informacja o badanym zjawisku, tym mniejszą wartość stanowi ona dla aktualnej prognozy.')
+    wyb1 = lc.selectbox('Wybierz typ trendu: ',['multiplikatywny','addytywny'])
+    wyb2 = lc.selectbox('Wybierz typ sezonowości: ',['multiplikatywny','addytywny'])
+    wyb3 = lc.selectbox('Czy stłumić składnik trendu: ',[True,False])
 
-    df['HWES3_MUL'] = ExponentialSmoothing(df['GRIPEX HOT        '],damped=False,trend='add',seasonal='add',seasonal_periods=6).fit().fittedvalues
+    df['HWES3_MUL'] = ExponentialSmoothing(df['GRIPEX HOT        '],damped=wyb3,trend=wyb1[:3],seasonal=wyb2[:3],seasonal_periods=6).fit().fittedvalues
     
     fig = go.Figure(layout =go.Layout(
     xaxis = dict(showgrid=True,title='<b>Okres', ticklabelmode="period", dtick="M1", tickformat="%b\n%",tickangle=45,tickvals=list(df.Okres.astype('string')),
@@ -356,7 +363,7 @@ else:
     okresy = u+t[2:]
 
     
-    fitted_model = ExponentialSmoothing(df['GRIPEX HOT        '],damped=False,trend='add',seasonal='add',seasonal_periods=6).fit()
+    fitted_model = ExponentialSmoothing(df['GRIPEX HOT        '],damped=wyb3,trend=wyb1[:3],seasonal=wyb2[:3],seasonal_periods=12).fit()
     test_predictions = fitted_model.forecast(36) 
     
     fig1 = go.Figure(layout =go.Layout(
@@ -386,12 +393,6 @@ else:
             color="Black"),title='<b>Sprzedaż ilościowa Gripexu Hot w podziale na miesiące',title_x=0.5)
     
     
-    st.header(':clock230: Model Holta Wintersa')
-    lc,rc = st.columns((1,3))
-    lc.subheader('Model Holta-Wintersa jest jedną z technik prognozowania wykorzystujących tzw. wygładzenie wykładnicze. Wygładzenie polega na stworzeniu ważonej średniej ruchomej, której wagi określa się według schematu - im starsza informacja o badanym zjawisku, tym mniejszą wartość stanowi ona dla aktualnej prognozy.')
-    wyb1 = st.selectbox('Wybierz typ trendu: ',['multiplikatywny','addytywny'])
-    wyb2 = st.selectbox('Wybierz typ sezonowości: ',['multiplikatywny','addytywny'])
-    wyb3 = st.selectbox('Czy stłumić składnik trendu: ',[True,False])
    
     rc.plotly_chart(fig,True)
     rc.plotly_chart(fig1,True)
