@@ -409,7 +409,7 @@ else:
         y = test_predictions.values,
         name = "HWES_pred",
         mode='lines+markers',
-        line_color = 'lima',
+        line_color = 'green',
         opacity = 0.8))
 
     # Use string to set start xaxis range
