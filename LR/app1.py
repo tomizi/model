@@ -248,7 +248,7 @@ else:
         name = "Linia trendu",
         mode='lines+markers',
         line_color = 'dodgerblue',
-        marker_size=8,
+        marker_size=6,
         opacity = 0.8))
 
     # Use string to set start xaxis range
@@ -325,8 +325,8 @@ else:
         y = df['Rolling_Mean'],
         name = "Średnia ruchoma",
         mode='lines+markers',
-        line_color = 'green',
-        marker_size=8,
+        line_color = 'dodgerblue',
+        marker_size=6,
         opacity = 0.8))
 
     # Use string to set start xaxis range
@@ -386,8 +386,8 @@ else:
         y = df['HWES'],
         name = "HWES",
         mode='lines+markers',
-        marker_size=8,
-        line_color = 'green',
+        marker_size=6,
+        line_color = 'dodgerblue',
         opacity = 0.8))
 
     # Use string to set start xaxis range
@@ -429,8 +429,8 @@ else:
         y = test_predictions.values,
         name = "HWES_pred",
         mode='lines+markers',
-        marker_size=8,
-        line_color = 'green',
+        marker_size=6,
+        line_color = 'dodgerblue',
         opacity = 0.8))
 
     # Use string to set start xaxis range
