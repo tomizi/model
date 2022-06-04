@@ -329,6 +329,15 @@ else:
     lc,rc = st.columns((1,3))
     lc.subheader('Model Holta-Wintersa jest jedną z technik prognozowania wykorzystujących tzw. wygładzenie wykładnicze. Wygładzenie polega na stworzeniu ważonej średniej ruchomej, której wagi określa się według schematu - im starsza informacja o badanym zjawisku, tym mniejszą wartość stanowi ona dla aktualnej prognozy.')
     
+    wyb1 = lc.selectbox('Wybierz typ trendu: ',['addytywny','multiplikatywny'])
+    wyb2 = lc.selectbox('Wybierz typ sezonowości: ',['addytywny','multiplikatywny'])
+    wyb3 = lc.selectbox('Czy stłumić składnik trendu: ',[False,True])
+    
+    lc.markdown('###')
+    lc.markdown('###')
+    lc.markdown('###')
+    lc.markdown('###')
+    
     df['HWES'] = ExponentialSmoothing(df['GRIPEX HOT        '],damped=wyb3,trend=wyb1[:3],seasonal=wyb2[:3],seasonal_periods=12).fit().fittedvalues
     from sklearn.metrics import mean_absolute_error,mean_squared_error
     MSE=mean_squared_error(y, list(df['HWES']))
@@ -336,16 +345,6 @@ else:
     RMSE=np.sqrt(MSE)
     lc.info('MAE :'+str(MAE))
     lc.warning('RMSE :'+str(RMSE))
-    
-    
-    lc.markdown('###')
-    lc.markdown('###')
-    lc.markdown('###')
-    lc.markdown('###')
-    wyb1 = lc.selectbox('Wybierz typ trendu: ',['addytywny','multiplikatywny'])
-    wyb2 = lc.selectbox('Wybierz typ sezonowości: ',['addytywny','multiplikatywny'])
-    wyb3 = lc.selectbox('Czy stłumić składnik trendu: ',[False,True])
-    
   
 
    
