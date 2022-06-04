@@ -313,7 +313,7 @@ else:
         opacity = 0.8))
 
     # Use string to set start xaxis range
-    fig.update_layout(plot_bgcolor='white',font=dict(
+    fig.update_layout(plot_bgcolor='white',height=550,font=dict(
             size=18,
             color="Black"),title='<b>Sprzedaż ilościowa Gripexu Hot w podziale na miesiące',title_x=0.5)
     rc.plotly_chart(fig,True)
