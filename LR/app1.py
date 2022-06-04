@@ -336,15 +336,17 @@ else:
     lc.markdown('###')
     lc.markdown('###')
     lc.markdown('###')
-    lc.markdown('###')
+    
     
     df['HWES'] = ExponentialSmoothing(df['GRIPEX HOT        '],damped=wyb3,trend=wyb1[:3],seasonal=wyb2[:3],seasonal_periods=12).fit().fittedvalues
     from sklearn.metrics import mean_absolute_error,mean_squared_error
     MSE=mean_squared_error(y, list(df['HWES']))
     MAE=mean_absolute_error(y, list(df['HWES']))
     RMSE=np.sqrt(MSE)
-    lc.info('MAE :'+str(MAE))
-    lc.warning('RMSE :'+str(RMSE))
+    lc.subheader('Średni błąd absolutny: ')
+    lc.info('MAE :'+str(round(MAE,3)))
+    lc.subheader('Błąd średniokwadratowy: ')
+    lc.warning('RMSE :'+str(round(RMSE,3)))
   
 
    
@@ -418,6 +420,8 @@ else:
     
    
     rc.plotly_chart(fig,True)
+    rc.markdown('###')
+    rc.markdown('###')
     rc.plotly_chart(fig1,True)
     
     st.header('Prognoza na najbliższe lata:')
