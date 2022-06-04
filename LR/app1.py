@@ -239,7 +239,7 @@ else:
     # Use string to set start xaxis range
     fig.update_layout(plot_bgcolor='white',height=500,font=dict(
             size=18,
-            color="Black"),title='<b>Sprzedaż ilościowa Gripexu Hot w podziale na miesiące',title_x=0.5)
+            color="Black"),title='<b>Sprzedaż ilościowa Gripexu Hot - prognozy vs. rzeczywistość',title_x=0.5)
     from sklearn.metrics import mean_squared_error
     MSE=mean_squared_error(y, pred)
     RMSE=np.sqrt(MSE)
@@ -315,7 +315,7 @@ else:
     # Use string to set start xaxis range
     fig.update_layout(plot_bgcolor='white',height=550,font=dict(
             size=18,
-            color="Black"),title='<b>Sprzedaż ilościowa Gripexu Hot w podziale na miesiące',title_x=0.5)
+            color="Black"),title='<b>Sprzedaż ilościowa Gripexu Hot - prognozy vs. rzeczywistość',title_x=0.5)
     rc.plotly_chart(fig,True)
     st.markdown('---')
     
