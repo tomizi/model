@@ -335,6 +335,8 @@ else:
     
     lc.markdown('###')
     lc.markdown('###')
+    lc.markdown('###')
+    lc.markdown('###')
     
     
     df['HWES'] = ExponentialSmoothing(df['GRIPEX HOT        '],damped=wyb3,trend=wyb1[:3],seasonal=wyb2[:3],seasonal_periods=12).fit().fittedvalues
@@ -371,7 +373,7 @@ else:
         opacity = 0.8))
 
     # Use string to set start xaxis range
-    fig.update_layout(plot_bgcolor='white',height=600,font=dict(
+    fig.update_layout(plot_bgcolor='white',height=550,font=dict(
             size=18,
             color="Black"),title='<b>Sprzedaż ilościowa Gripexu Hot - prognozy vs. rzeczywistość',title_x=0.5)
     
@@ -406,13 +408,13 @@ else:
     fig1.add_trace(go.Scatter(
         x = okresy[36:],
         y = test_predictions.values,
-        name = "HWES",
+        name = "HWES_pred",
         mode='lines+markers',
         line_color = 'green',
         opacity = 0.8))
 
     # Use string to set start xaxis range
-    fig1.update_layout(plot_bgcolor='white',height=600,font=dict(
+    fig1.update_layout(plot_bgcolor='white',height=550,font=dict(
             size=18,
             color="Black"),title='<b>Prognoza sprzedaży ilościowej Gripexu Hot przy urzyciu modelu Holta-Wintersa',title_x=0.5)
     
