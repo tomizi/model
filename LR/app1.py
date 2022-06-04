@@ -385,9 +385,11 @@ else:
             size=18,
             color="Black"),title='<b>Sprzedaż ilościowa Gripexu Hot w podziale na miesiące',title_x=0.5)
     
-    lc,rc = st.columns((1,3))
     
     st.header(':clock230: Model Holta Wintersa')
+    lc,rc = st.columns((1,3))
+    
+   
     rc.plotly_chart(fig,True)
     rc.plotly_chart(fig1,True)
     
