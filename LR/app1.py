@@ -316,7 +316,7 @@ else:
     # double and triple exponential smoothing
     from statsmodels.tsa.holtwinters import ExponentialSmoothing
 
-    df['HWES3_MUL'] = ExponentialSmoothing(df['GRIPEX HOT        '],demped=False,trend='add',seasonal='add',seasonal_periods=6).fit().fittedvalues
+    df['HWES3_MUL'] = ExponentialSmoothing(df['GRIPEX HOT        '],damped=False,trend='add',seasonal='add',seasonal_periods=6).fit().fittedvalues
     
     fig = go.Figure(layout =go.Layout(
     xaxis = dict(showgrid=True,title='<b>Okres', ticklabelmode="period", dtick="M1", tickformat="%b\n%",tickangle=45,tickvals=list(df.Okres.astype('string')),
@@ -356,7 +356,7 @@ else:
     okresy = u+t[2:]
 
     
-    fitted_model = ExponentialSmoothing(df['GRIPEX HOT        '],demped=False,trend='add',seasonal='add',seasonal_periods=6).fit()
+    fitted_model = ExponentialSmoothing(df['GRIPEX HOT        '],damped=False,trend='add',seasonal='add',seasonal_periods=6).fit()
     test_predictions = fitted_model.forecast(36) 
     
     fig1 = go.Figure(layout =go.Layout(
