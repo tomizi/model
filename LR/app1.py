@@ -282,7 +282,7 @@ else:
     lc, rc = st.columns((1,3))
     lc.subheader('Sposób prognozowania tą metodą polega na policzeniu średniej z '+r'$k$'+' ostatnich okresów. Jest to sposób prognozy krótkoterminowej. Największa trudność polega na optymalnym doborze '+r'$k$.') 
    
-    k = lc.number_input('Wybierz '+r'$k$:',min_value=1,max_value=10,step=1)
+    k = lc.number_input('Wybierz k:',min_value=1,max_value=10,step=1)
     df['Rolling_Mean'] = df.iloc[:,2].rolling(k).mean()
     
     from sklearn.metrics import mean_squared_error
