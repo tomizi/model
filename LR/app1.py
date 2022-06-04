@@ -207,7 +207,7 @@ else:
         ))
 
     # Use string to set start xaxis range
-    fig.update_layout(plot_bgcolor='white',font=dict(
+    fig.update_layout(plot_bgcolor='white',width=800,font=dict(
             size=18,
             color="Black"),title='<b>Sprzedaż ilościowa Gripexu Hot w podziale na miesiące',title_x=0.5)
     st.plotly_chart(fig,True)
@@ -237,8 +237,9 @@ else:
         x = df.Okres,
         y = df['GRIPEX HOT        '],
         name = "GRIPEX HOT",
-        line_color = 'dodgerblue',
+        line_color = 'red',
         mode='lines+markers',
+        marker_size=8,
         line_width=3
         ))
     fig.add_trace(go.Scatter(
@@ -247,6 +248,7 @@ else:
         name = "Linia trendu",
         mode='lines+markers',
         line_color = 'green',
+        marker_size=8,
         opacity = 0.8))
 
     # Use string to set start xaxis range
@@ -313,8 +315,9 @@ else:
         x = df.Okres,
         y = df['GRIPEX HOT        '],
         name = "GRIPEX HOT",
-        line_color = 'dodgerblue',
+        line_color = 'red',
         mode='lines+markers',
+        marker_size=8,
         line_width=3
         ))
     fig.add_trace(go.Scatter(
@@ -323,6 +326,7 @@ else:
         name = "Średnia ruchoma",
         mode='lines+markers',
         line_color = 'green',
+        marker_size=8,
         opacity = 0.8))
 
     # Use string to set start xaxis range
@@ -372,7 +376,8 @@ else:
         x = df.Okres,
         y = df['GRIPEX HOT        '],
         name = "GRIPEX HOT",
-        line_color = 'dodgerblue',
+        line_color = 'red',
+        marker_size=8,
         mode='lines+markers',
         line_width=3
         ))
@@ -381,6 +386,7 @@ else:
         y = df['HWES'],
         name = "HWES",
         mode='lines+markers',
+        marker_size=8,
         line_color = 'green',
         opacity = 0.8))
 
@@ -413,8 +419,9 @@ else:
         x = okresy[:36],
         y = df['GRIPEX HOT        '],
         name = "GRIPEX HOT",
-        line_color = 'dodgerblue',
+        line_color = 'red',
         mode='lines+markers',
+        marker_size=8,
         line_width=3
         ))
     fig1.add_trace(go.Scatter(
@@ -422,6 +429,7 @@ else:
         y = test_predictions.values,
         name = "HWES_pred",
         mode='lines+markers',
+        marker_size=8,
         line_color = 'green',
         opacity = 0.8))
 
