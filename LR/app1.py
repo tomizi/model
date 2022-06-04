@@ -411,7 +411,7 @@ else:
     st.header('Prognoza na najbliższe lata:')
     lc2,rc2 = st.columns((2,2))
     m1,r1 = lc2.number_input('Podaj miesiąc: ',min_value=1,max_value=12,step=1),rc2.number_input('Podaj rok: ',min_value=2022,max_value=2026,step=1)
-    st.subheader('Przewidziana ilość sprzedaży w '+str(int(m1))+'-'+str(int(r1))+' to: '+str(model.predict([[szukaj(m1,r1)]])[0]))
+    st.subheader('Przewidziana ilość sprzedaży w '+str(int(m1))+'-'+str(int(r1))+' to: )
     
     st.markdown('---')
     
