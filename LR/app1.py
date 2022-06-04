@@ -274,7 +274,7 @@ else:
         for i in t:
             if i[0] == m and i[1] == r:
                 return i[2]
-    st.subheader('Przewidziana ilość sprzedaży w '+str(int(m))+'-'+str(int(r))+' to: '+str(model.predict([[szukaj(m,r)]])[0]))
+    st.subheader('Przewidziana ilość sprzedaży w '+str(int(m))+'-'+str(int(r))+' to: '+str(round(model.predict([[szukaj(m,r)]])[0],0)))
     
     st.markdown('---')
     
@@ -328,6 +328,8 @@ else:
     st.header(':clock230: Model Holta Wintersa')
     lc,rc = st.columns((1,3))
     lc.subheader('Model Holta-Wintersa jest jedną z technik prognozowania wykorzystujących tzw. wygładzenie wykładnicze. Wygładzenie polega na stworzeniu ważonej średniej ruchomej, której wagi określa się według schematu - im starsza informacja o badanym zjawisku, tym mniejszą wartość stanowi ona dla aktualnej prognozy.')
+    lc.markdown('###')
+    lc.markdown('###')
     lc.markdown('###')
     lc.markdown('###')
     wyb1 = lc.selectbox('Wybierz typ trendu: ',['addytywny','multiplikatywny'])
@@ -410,7 +412,7 @@ else:
     
     st.header('Prognoza na najbliższe lata:')
     a,b = st.columns(2)
-    b1 = b.number_input('Podaj rok:',min_value=2022,max_value=2026,step=1)
+    b1 = b.number_input('Podaj rok:',min_value=2022,max_value=2024,step=1)
     a1 = a.number_input('Podaj miesiąc:',min_value=1,max_value=12,step=1)
     
     tab = list(df.iloc[[34,35],2]) + list(test_predictions.values)
@@ -424,7 +426,7 @@ else:
         for i in t:
             if i[0] == m and i[1] == r:
                 return i[2]
-    st.subheader('Przewidziana ilość sprzedaży w '+str(int(a1))+'-'+str(int(b1))+' to:'+str(tab[szukaj(a1,b1)]) )
+    st.subheader('Przewidziana ilość sprzedaży w '+str(int(a1))+'-'+str(int(b1))+' to:'+str(round(tab[szukaj(a1,b1)],0)) )
     
     st.markdown('---')
     
