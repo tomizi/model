@@ -388,7 +388,10 @@ else:
     
     st.header(':clock230: Model Holta Wintersa')
     lc,rc = st.columns((1,3))
-    
+    lc.subheader('Model Holta-Wintersa jest jedną z technik prognozowania wykorzystujących tzw. wygładzenie wykładnicze. Wygładzenie polega na stworzeniu ważonej średniej ruchomej, której wagi określa się według schematu - im starsza informacja o badanym zjawisku, tym mniejszą wartość stanowi ona dla aktualnej prognozy.')
+    wyb1 = st.selectbox('Wybierz typ trendu: ',['multiplikatywny','addytywny'])
+    wyb2 = st.selectbox('Wybierz typ sezonowości: ',['multiplikatywny','addytywny'])
+    wyb3 = st.selectbox('Czy stłumić składnik trendu: ',[True,False])
    
     rc.plotly_chart(fig,True)
     rc.plotly_chart(fig1,True)
