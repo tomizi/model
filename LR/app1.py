@@ -207,7 +207,7 @@ else:
         ))
 
     # Use string to set start xaxis range
-    fig.update_layout(plot_bgcolor='white',width=800,font=dict(
+    fig.update_layout(plot_bgcolor='white',height=800,font=dict(
             size=18,
             color="Black"),title='<b>Sprzedaż ilościowa Gripexu Hot w podziale na miesiące',title_x=0.5)
     st.plotly_chart(fig,True)
@@ -247,7 +247,7 @@ else:
         y = pred,
         name = "Linia trendu",
         mode='lines+markers',
-        line_color = 'green',
+        line_color = 'dodgerblue',
         marker_size=8,
         opacity = 0.8))
 
