@@ -281,8 +281,8 @@ else:
     st.header(':clock3: Metoda średniej ruchomej')
     lc, rc = st.columns((1,3))
     lc.subheader('Sposób prognozowania tą metodą polega na policzeniu średniej z '+r'$k$'+' ostatnich okresów. Jest to sposób prognozy krótkoterminowej. Największa trudność polega na optymalnym doborze '+r'$k$.') 
-    lc.subheader('Wybierz '+r'$k$:')
-    k = lc1.number_input('Wybierz '+r'$k$:',min_value=1,max_value=10,step=1)
+   
+    k = lc.number_input('Wybierz '+r'$k$:',min_value=1,max_value=10,step=1)
     df['Rolling_Mean'] = df.iloc[:,2].rolling(k).mean()
     
     from sklearn.metrics import mean_squared_error
