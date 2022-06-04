@@ -414,7 +414,7 @@ else:
     a1 = a.number_input('Podaj miesiąc:',min_value=1,max_value=12,step=1)
     
     tab = list(df.iloc[[34,35],2]) + list(df.iloc[:,4])
-    st.subheader('Przewidziana ilość sprzedaży w '+str(int(1))+'-'+str(int(1))+' to:'+str(tab[szukaj(a1,b1]) )
+    st.subheader('Przewidziana ilość sprzedaży w '+str(int(1))+'-'+str(int(1))+' to:'+str(tab[szukaj(a1,b1)]) )
     
     st.markdown('---')
     
