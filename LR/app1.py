@@ -335,8 +335,7 @@ else:
     
     lc.markdown('###')
     lc.markdown('###')
-    lc.markdown('###')
-    lc.markdown('###')
+ 
     
     
     df['HWES'] = ExponentialSmoothing(df['GRIPEX HOT        '],damped=wyb3,trend=wyb1[:3],seasonal=wyb2[:3],seasonal_periods=12).fit().fittedvalues
