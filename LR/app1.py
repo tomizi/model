@@ -192,13 +192,13 @@ else:
     st.subheader('Wykres poniżej przedstawia ilościową sprzedaż Gripexu Hot w poszczególnych miesiącach od marca 2019 do lutego 2022. Jest to przykład szeregu czasowego.')
     
     fig = go.Figure(layout =go.Layout(
-    xaxis = dict(showgrid=True,title='<b>Okres', ticklabelmode="period", dtick="M1", tickformat="%b\n%",tickangle=45,tickvals=list(df.Okres.astype('string')),
-                            ticktext = df.Okres.astype('string'),linecolor='black',tickwidth=1,tickcolor='black',ticks="outside"),
+    xaxis = dict(showgrid=True,title='<b>Okres', ticklabelmode="period", dtick="M1", tickformat="%b\n%",tickangle=45,tickvals=list(DF.Okres.astype('string')),
+                            ticktext = DF.Okres.astype('string'),linecolor='black',tickwidth=1,tickcolor='black',ticks="outside"),
     yaxis = dict(linecolor='black',title='<b>Ilość sprzedaży [tyś. sztuk]',tickwidth=1,tickcolor='black',ticks="outside",gridcolor='black')
     ))
     fig.add_trace(go.Scatter(
-        x = df.Okres,
-        y = df['GRIPEX HOT        '],
+        x = DF.Okres,
+        y = DF['GRIPEX HOT        '],
         name = "GRIPEX HOT",
         line_color = 'red',
         mode='lines+markers',
