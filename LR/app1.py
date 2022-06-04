@@ -328,12 +328,11 @@ else:
     st.header(':clock230: Model Holta Wintersa')
     lc,rc = st.columns((1,3))
     lc.subheader('Model Holta-Wintersa jest jedną z technik prognozowania wykorzystujących tzw. wygładzenie wykładnicze. Wygładzenie polega na stworzeniu ważonej średniej ruchomej, której wagi określa się według schematu - im starsza informacja o badanym zjawisku, tym mniejszą wartość stanowi ona dla aktualnej prognozy.')
-    
+    lc.markdown('###')
     wyb1 = lc.selectbox('Wybierz typ trendu: ',['addytywny','multiplikatywny'])
     wyb2 = lc.selectbox('Wybierz typ sezonowości: ',['addytywny','multiplikatywny'])
     wyb3 = lc.selectbox('Czy stłumić składnik trendu: ',[False,True])
     
-    lc.markdown('###')
     lc.markdown('###')
     lc.markdown('###')
     
@@ -372,7 +371,7 @@ else:
         opacity = 0.8))
 
     # Use string to set start xaxis range
-    fig.update_layout(plot_bgcolor='white',font=dict(
+    fig.update_layout(plot_bgcolor='white',width=500,font=dict(
             size=18,
             color="Black"),title='<b>Sprzedaż ilościowa Gripexu Hot - prognozy vs. rzeczywistość',title_x=0.5)
     
@@ -413,7 +412,7 @@ else:
         opacity = 0.8))
 
     # Use string to set start xaxis range
-    fig1.update_layout(plot_bgcolor='white',font=dict(
+    fig1.update_layout(plot_bgcolor='white',width=500,font=dict(
             size=18,
             color="Black"),title='<b>Prognoza sprzedaży ilościowej Gripexu Hot przy urzyciu modelu Holta-Wintersa',title_x=0.5)
     
