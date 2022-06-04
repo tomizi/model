@@ -191,13 +191,25 @@ else:
          'Modelem szeregu czasowego służącym do określenia przyszłej wartości zmiennej prognozowanej w momencie prognozowania jest model formalny, którego zmiennymi objaśniającymi mogą być tylko zmienne czasowe oraz przyszłe wartości lub otrzymane prognozy.')
     st.subheader('Wykres poniżej przedstawia ilościową sprzedaż Gripexu Hot w poszczególnych miesiącach od marca 2019 do lutego 2022. Jest to przykład szeregu czasowego.')
     
-    fig = px.line(DF,x='Okres',y='GRIPEX HOT        ',markers=True,labels={'GRIPEX HOT        ':'<b>Ilość sprzedaży [tyś. sztuk]','Okres':'<b>Okres'})
-    fig.update_xaxes(showgrid=True, ticklabelmode="period", dtick="M1", tickformat="%b\n%",tickangle=45,tickvals=list(DF.Okres.astype('string')),
-                                ticktext = DF.Okres.astype('string'),linecolor='black',tickwidth=1,tickcolor='black',ticks="outside")
-    fig.update_yaxes(linecolor='black',tickwidth=1,tickcolor='black',ticks="outside")
-    fig.update_layout(plot_bgcolor='white',width = 1200, height = 500,font=dict(
-        size=18,
-        color="Black"))
+    fig = go.Figure(layout =go.Layout(
+    xaxis = dict(showgrid=True,title='<b>Okres', ticklabelmode="period", dtick="M1", tickformat="%b\n%",tickangle=45,tickvals=list(df.Okres.astype('string')),
+                            ticktext = df.Okres.astype('string'),linecolor='black',tickwidth=1,tickcolor='black',ticks="outside"),
+    yaxis = dict(linecolor='black',title='<b>Ilość sprzedaży [tyś. sztuk]',tickwidth=1,tickcolor='black',ticks="outside",gridcolor='black')
+    ))
+    fig.add_trace(go.Scatter(
+        x = df.Okres,
+        y = df['GRIPEX HOT        '],
+        name = "GRIPEX HOT",
+        line_color = 'red',
+        mode='lines+markers',
+        marker_size=10,
+        line_width=3
+        ))
+
+    # Use string to set start xaxis range
+    fig.update_layout(plot_bgcolor='white',font=dict(
+            size=18,
+            color="Black"),title='<b>Sprzedaż ilościowa Gripexu Hot w podziale na miesiące',title_x=0.5)
     st.plotly_chart(fig,True)
              
     st.markdown('---')
