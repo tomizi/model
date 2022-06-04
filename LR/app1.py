@@ -430,8 +430,8 @@ else:
         name = "HWES_pred",
         mode='lines+markers',
         marker_size=6,
-        line_color = 'dodgerblue',
-        opacity = 0.8))
+        line_color = 'green',
+        opacity = 1))
 
     # Use string to set start xaxis range
     fig1.update_layout(plot_bgcolor='white',height=550,font=dict(
