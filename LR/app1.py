@@ -224,7 +224,7 @@ else:
         x = df.Okres,
         y = df['GRIPEX HOT        '],
         name = "GRIPEX HOT",
-        line_color = 'red',
+        line_color = 'dodgerblue',
         mode='lines+markers',
         line_width=3
         ))
@@ -233,7 +233,7 @@ else:
         y = pred,
         name = "Linia trendu",
         mode='lines+markers',
-        line_color = 'blue',
+        line_color = 'green',
         opacity = 0.8))
 
     # Use string to set start xaxis range
@@ -309,7 +309,7 @@ else:
         y = df['Rolling_Mean'],
         name = "Średnia ruchoma",
         mode='lines+markers',
-        line_color = 'gray',
+        line_color = 'green',
         opacity = 0.8))
 
     # Use string to set start xaxis range
@@ -368,7 +368,7 @@ else:
         y = df['HWES'],
         name = "HWES",
         mode='lines+markers',
-        line_color = 'gray',
+        line_color = 'green',
         opacity = 0.8))
 
     # Use string to set start xaxis range
@@ -409,7 +409,7 @@ else:
         y = test_predictions.values,
         name = "HWES_pred",
         mode='lines+markers',
-        line_color = 'green',
+        line_color = 'lima',
         opacity = 0.8))
 
     # Use string to set start xaxis range
