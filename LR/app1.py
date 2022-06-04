@@ -305,9 +305,9 @@ else:
             size=18,
             color="Black"),title='<b>Sprzedaż ilościowa Gripexu Hot w podziale na miesiące',title_x=0.5)
     st.header(':clock3: Metoda średniej ruchomej')
-    
-    st.plotly_chart(fig,True)
-    
+    lc, rc = st.columns((1,3))
+    rc.plotly_chart(fig,True)
+    lc.subheader('Sposób prognozowania tą metodą polega na policzeniu średniej z '+r'$k$'+' ostatnich okresów. Jest to sposób prognozy krótkoterminowej. Największa trudność polega na optymalnym doborze '+r'$k$.') 
     st.markdown('---')
     
     # holt winters 
