@@ -371,7 +371,7 @@ else:
         opacity = 0.8))
 
     # Use string to set start xaxis range
-    fig.update_layout(plot_bgcolor='white',width=500,font=dict(
+    fig.update_layout(plot_bgcolor='white',height=500,font=dict(
             size=18,
             color="Black"),title='<b>Sprzedaż ilościowa Gripexu Hot - prognozy vs. rzeczywistość',title_x=0.5)
     
@@ -412,7 +412,7 @@ else:
         opacity = 0.8))
 
     # Use string to set start xaxis range
-    fig1.update_layout(plot_bgcolor='white',width=800,font=dict(
+    fig1.update_layout(plot_bgcolor='white',height=800,font=dict(
             size=18,
             color="Black"),title='<b>Prognoza sprzedaży ilościowej Gripexu Hot przy urzyciu modelu Holta-Wintersa',title_x=0.5)
     
