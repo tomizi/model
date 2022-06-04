@@ -409,8 +409,8 @@ else:
     rc.plotly_chart(fig1,True)
     
     st.header('Prognoza na najbliższe lata:')
-    lc12,rc12 = st.columns((2,2))
-    m1,r1 = lc12.number_input('Podaj miesiąc: ',min_value=1,max_value=12,step=1),rc12.number_input('Podaj rok: ',min_value=2022,max_value=2026,step=1)
+    #lc12,rc12 = st.columns((2,2))
+    #m1,r1 = lc12.number_input('Podaj miesiąc: ',min_value=1,max_value=12,step=1),rc12.number_input('Podaj rok: ',min_value=2022,max_value=2026,step=1)
     st.subheader('Przewidziana ilość sprzedaży w '+str(int(m1))+'-'+str(int(r1))+' to:' )
     
     st.markdown('---')
