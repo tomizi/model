@@ -330,9 +330,9 @@ else:
     lc.subheader('Model Holta-Wintersa jest jedną z technik prognozowania wykorzystujących tzw. wygładzenie wykładnicze. Wygładzenie polega na stworzeniu ważonej średniej ruchomej, której wagi określa się według schematu - im starsza informacja o badanym zjawisku, tym mniejszą wartość stanowi ona dla aktualnej prognozy.')
     lc.markdown('###')
     lc.markdown('###')
-    wyb1 = lc.selectbox('Wybierz typ trendu: ',['multiplikatywny','addytywny'])
-    wyb2 = lc.selectbox('Wybierz typ sezonowości: ',['multiplikatywny','addytywny'])
-    wyb3 = lc.selectbox('Czy stłumić składnik trendu: ',[True,False])
+    wyb1 = lc.selectbox('Wybierz typ trendu: ',['addytywny','multiplikatywny'])
+    wyb2 = lc.selectbox('Wybierz typ sezonowości: ',['addytywny','multiplikatywny'])
+    wyb3 = lc.selectbox('Czy stłumić składnik trendu: ',[False,True])
 
     df['HWES3_MUL'] = ExponentialSmoothing(df['GRIPEX HOT        '],damped=wyb3,trend=wyb1[:3],seasonal=wyb2[:3],seasonal_periods=6).fit().fittedvalues
     
