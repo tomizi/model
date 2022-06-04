@@ -413,7 +413,7 @@ else:
     b1 = b.number_input('Podaj rok:',min_value=2022,max_value=2026,step=1)
     a1 = a.number_input('Podaj miesiąc:',min_value=1,max_value=12,step=1)
     
-    tab = list(df.iloc[[34,35],2]) + list(df.iloc[:,4])
+    tab = list(df.iloc[[34,35],2]) + list(test_predictions.values)
     tab
     str(tab[szukaj(a1,b1)])
     def szukaj(m,r):
