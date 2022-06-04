@@ -411,7 +411,7 @@ else:
     st.header('Prognoza na najbliższe lata:')
     a,b = st.columns(2)
     a.write('dads')
-    b.write('dasd')
+    b.number_input('Podaj rok: ',min_value=2022,max_value=2026,step=1)
     #b1 = b.number_input('Podaj rok: ',min_value=2022,max_value=2026,step=1)
     #a1 = a.number_input('Podaj miesiąc: ',min_value=1,max_value=12,step=1)
     st.subheader('Przewidziana ilość sprzedaży w '+str(int(1))+'-'+str(int(1))+' to:' )
