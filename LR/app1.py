@@ -23,18 +23,19 @@ for i in range(2,len(DF.columns)):
 
 st.set_page_config(page_title='Model prognostyczny dla leków', page_icon = ':bar_chart:', layout='wide')
 
-st.sidebar.header('Lata uwzględniane w modelu:')
+st.sidebar.header('Panel sterowania: ')
 
 Model = st.sidebar.radio(
     'Wybierz model:',
     ('Prognoza','Uzupełnianie danych')
  )
-rok = st.sidebar.multiselect(
+if Model == 'Uzupełnianie danych':
+    rok = st.sidebar.multiselect(
     "Wybierz lata:",
     options=DF['rok'].unique(),
-    default=['2019','2021']
-    )
-if Model == 'Uzupełnianie danych':
+    default=['2019','2021'])
+    
+    
     st.title(':bar_chart: Model uzupełniający dane dla leków')
     st.header('Regresja wieloraka')
     st.subheader('Jest to metoda pozwalająca szacować wartosci danej wielkosci za pomocą znanych już wartosci innych wielkosci. Polega na '+
