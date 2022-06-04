@@ -424,7 +424,6 @@ else:
         for i in t:
             if i[0] == m and i[1] == r:
                 return i[2]
-    t
     st.subheader('Przewidziana ilość sprzedaży w '+str(int(a1))+'-'+str(int(b1))+' to:'+str(tab[szukaj(a1,b1)]) )
     
     st.markdown('---')
