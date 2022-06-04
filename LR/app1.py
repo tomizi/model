@@ -328,6 +328,16 @@ else:
     st.header(':clock230: Model Holta Wintersa')
     lc,rc = st.columns((1,3))
     lc.subheader('Model Holta-Wintersa jest jedną z technik prognozowania wykorzystujących tzw. wygładzenie wykładnicze. Wygładzenie polega na stworzeniu ważonej średniej ruchomej, której wagi określa się według schematu - im starsza informacja o badanym zjawisku, tym mniejszą wartość stanowi ona dla aktualnej prognozy.')
+    
+    df['HWES'] = ExponentialSmoothing(df['GRIPEX HOT        '],damped=wyb3,trend=wyb1[:3],seasonal=wyb2[:3],seasonal_periods=12).fit().fittedvalues
+    from sklearn.metrics import mean_absolute_error,mean_squared_error
+    MSE=mean_squared_error(y, list(df['HWES']))
+    MAE=mean_absolute_error(y, list(df['HWES']))
+    RMSE=np.sqrt(MSE)
+    lc.info('MAE :'+str(MAE))
+    lc.warning('RMSE :'+str(RMSE))
+    
+    
     lc.markdown('###')
     lc.markdown('###')
     lc.markdown('###')
@@ -335,9 +345,10 @@ else:
     wyb1 = lc.selectbox('Wybierz typ trendu: ',['addytywny','multiplikatywny'])
     wyb2 = lc.selectbox('Wybierz typ sezonowości: ',['addytywny','multiplikatywny'])
     wyb3 = lc.selectbox('Czy stłumić składnik trendu: ',[False,True])
-
-    df['HWES3_MUL'] = ExponentialSmoothing(df['GRIPEX HOT        '],damped=wyb3,trend=wyb1[:3],seasonal=wyb2[:3],seasonal_periods=6).fit().fittedvalues
     
+  
+
+   
     fig = go.Figure(layout =go.Layout(
     xaxis = dict(showgrid=True,title='<b>Okres', ticklabelmode="period", dtick="M1", tickformat="%b\n%",tickangle=45,tickvals=list(df.Okres.astype('string')),
                             ticktext = list(df.Okres.astype('string')),linecolor='black',tickwidth=1,tickcolor='black',ticks="outside"),
