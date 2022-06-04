@@ -277,7 +277,19 @@ else:
     st.subheader('Przewidziana ilość sprzedaży w '+str(int(m))+'-'+str(int(r))+' to: '+str(model.predict([[szukaj(m,r)]])[0]))
     
     st.markdown('---')
-    df['Rolling_Mean'] = df.iloc[:,2].rolling(6).mean()
+    
+    st.header(':clock3: Metoda średniej ruchomej')
+    lc, rc = st.columns((1,3))
+    lc.subheader('Sposób prognozowania tą metodą polega na policzeniu średniej z '+r'$k$'+' ostatnich okresów. Jest to sposób prognozy krótkoterminowej. Największa trudność polega na optymalnym doborze '+r'$k$.') 
+    lc.subheader('Wybierz '+r'$k$:')
+    k = lc1.number_input('Wybierz '+r'$k$:',min_value=1,max_value=10,step=1)
+    df['Rolling_Mean'] = df.iloc[:,2].rolling(k).mean()
+    
+    from sklearn.metrics import mean_squared_error
+    MSE=mean_squared_error(y[k:], list(df['Rolling_Mean'][k:]))
+    RMSE=np.sqrt(MSE)
+    lc.write('**Błąd średniokwadratowy:**')
+    lc.warning('**RMSE: '+str(round(RMSE,3))+'**')
     
     fig = go.Figure(layout =go.Layout(
     xaxis = dict(showgrid=True,title='<b>Okres', ticklabelmode="period", dtick="M1", tickformat="%b\n%",tickangle=45,tickvals=list(df.Okres.astype('string')),
@@ -304,10 +316,7 @@ else:
     fig.update_layout(plot_bgcolor='white',font=dict(
             size=18,
             color="Black"),title='<b>Sprzedaż ilościowa Gripexu Hot w podziale na miesiące',title_x=0.5)
-    st.header(':clock3: Metoda średniej ruchomej')
-    lc, rc = st.columns((1,3))
     rc.plotly_chart(fig,True)
-    lc.subheader('Sposób prognozowania tą metodą polega na policzeniu średniej z '+r'$k$'+' ostatnich okresów. Jest to sposób prognozy krótkoterminowej. Największa trudność polega na optymalnym doborze '+r'$k$.') 
     st.markdown('---')
     
     # holt winters 
@@ -398,6 +407,13 @@ else:
    
     rc.plotly_chart(fig,True)
     rc.plotly_chart(fig1,True)
+    
+    st.header('Prognoza na najbliższe lata:')
+    lc1,rc1 = st.columns((2,2))
+    m,r = lc1.number_input('Podaj miesiąc: ',min_value=1,max_value=12,step=1),rc1.number_input('Podaj rok: ',min_value=2022,max_value=2026,step=1)
+    st.subheader('Przewidziana ilość sprzedaży w '+str(int(m))+'-'+str(int(r))+' to: '+str(model.predict([[szukaj(m,r)]])[0]))
+    
+    st.markdown('---')
     
 
 
