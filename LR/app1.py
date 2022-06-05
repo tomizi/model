@@ -418,8 +418,44 @@ else:
             color="Black"),title='<b>Sprzedaż ilościowa Gripexu Hot - prognozy vs. rzeczywistość',title_x=0.5)
     rc.plotly_chart(fig,True)
     pred_mean = df.iloc[len(df.iloc[:,2])-k:,2].mean()
-    st.subheader('Przewidziana ilość sprzedaży w 3-2022 to: '+str(pred_mean))
+    st.subheader('Przewidziana ilość sprzedaży w 3-2022 to: '+str(round(pred_mean,3)))
     st.markdown('---')
+    
+    st.header(':clock330: Model ARIMA')
+    ll, rr = st.columns((1,3))
+    from statsmodels.tsa.arima_model import ARIMA
+    arima_model = ARIMA(df.iloc[:,2],order=(2,0,0))
+    model = arima_model.fit()
+    
+    fig = go.Figure(layout =go.Layout(
+    xaxis = dict(showgrid=True,title='<b>Okres', ticklabelmode="period", dtick="M1", tickformat="%b\n%",tickangle=45,tickvals=list(dane.Okres.astype('string')),
+                            ticktext = dane.Okres.astype('string'),linecolor='black',tickwidth=1,tickcolor='black',ticks="outside"),
+    yaxis = dict(linecolor='black',title='<b>Ilość sprzedaży [tyś. sztuk]',tickwidth=1,tickcolor='black',ticks="outside",gridcolor='black')
+    ))
+    fig.add_trace(go.Scatter(
+        x = dane.Okres,
+        y = dane['GRIPEX HOT        '],
+        name = "GRIPEX HOT",
+        line_color = 'dodgerblue',
+        mode='lines+markers',
+        line_width=3
+        ))
+    fig.add_trace(go.Scatter(
+        x = df.Okres,
+        y = model.predict().values,
+        name = "ARIMA",
+        mode='lines+markers',
+        line_color = 'gray',
+        opacity = 0.8))
+
+    # Use string to set start xaxis range
+    fig.update_layout(plot_bgcolor='white',font=dict(
+            size=18,
+            color="Black"),title='<b>Sprzedaż ilościowa Gripexu Hot w podziale na miesiące',title_x=0.5)
+    fig.show()
+
+    rr.plotly_chart(fig)
+
     
     # holt winters 
     # single exponential smoothing
