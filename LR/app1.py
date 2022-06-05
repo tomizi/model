@@ -440,7 +440,8 @@ else:
         x = df.Okres,
         y = df['GRIPEX HOT        '],
         name = "GRIPEX HOT",
-        line_color = 'dodgerblue',
+        line_color = 'red',
+        marker_size=8,
         mode='lines+markers',
         line_width=3
         ))
@@ -449,13 +450,14 @@ else:
         y = model.predict().values,
         name = "ARIMA",
         mode='lines+markers',
-        line_color = 'gray',
+        marker_size=6,
+        line_color = 'dodgerblue',
         opacity = 0.8))
 
     # Use string to set start xaxis range
     fig.update_layout(plot_bgcolor='white',font=dict(
             size=18,
-            color="Black"),title='<b>Sprzedaż ilościowa Gripexu Hot w podziale na miesiące',title_x=0.5)
+            color="Black"),title='<b>Sprzedaż ilościowa Gripexu Hot w podziale na miesiące',title_x=0.5,height=550)
     
     
     t = []
@@ -478,22 +480,24 @@ else:
         x = okresy[:36],
         y = df['GRIPEX HOT        '],
         name = "GRIPEX HOT",
-        line_color = 'dodgerblue',
+        line_color = 'red',
+        marker_size=8,
         mode='lines+markers',
         line_width=3
         ))
     fig1.add_trace(go.Scatter(
         x = okresy[36:],
         y = model.predict(36,72),
-        name = "HWES3_MUL",
+        name = "ARIMA_pred",
         mode='lines+markers',
-        line_color = 'green',
+        marker_size=6,
+        line_color = 'dodgerblue',
         opacity = 0.8))
 
     # Use string to set start xaxis range
-    fig.update_layout(plot_bgcolor='white',font=dict(
+    fig1.update_layout(plot_bgcolor='white',font=dict(
             size=18,
-            color="Black"),title='<b>Sprzedaż ilościowa Gripexu Hot w podziale na miesiące',title_x=0.5)
+            color="Black"),title='<b>Sprzedaż ilościowa Gripexu Hot w podziale na miesiące',title_x=0.5,height=550)
     
 
     rr.plotly_chart(fig,True)
