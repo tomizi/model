@@ -220,15 +220,19 @@ else:
     
     
     from statsmodels.tsa.seasonal import seasonal_decompose
-    decomp = seasonal_decompose(DF.iloc[:,[1]])
+    DF1 = DF
+    DF1['miesiac'] = pd.to_datetime(DF1['Okres'])
+    DF1.set_index(DF1.miesiac,inplace=True)
+
+    decomp = seasonal_decompose(DF1.iloc[:,[1]])
     
     fig1 = go.Figure(layout =go.Layout(
-    xaxis = dict(showgrid=True,title='<b>Okres', ticklabelmode="period", dtick="M1", tickformat="%b\n%",tickangle=45,tickvals=list(DF.Okres.astype('string')),
-                            ticktext = DF.Okres.astype('string'),linecolor='black',tickwidth=1,tickcolor='black',ticks="outside"),
+    xaxis = dict(showgrid=True,title='<b>Okres', ticklabelmode="period", dtick="M1", tickformat="%b\n%",tickangle=45,tickvals=list(DF1.Okres.astype('string')),
+                            ticktext = DF1.Okres.astype('string'),linecolor='black',tickwidth=1,tickcolor='black',ticks="outside"),
     yaxis = dict(linecolor='black',title='<b>Trend',tickwidth=1,tickcolor='black',ticks="outside",gridcolor='black')
     ))
     fig1.add_trace(go.Scatter(
-        x = DF.Okres,
+        x = DF1.Okres,
         y = decomp.trend.values,
 
         line_color = 'navy',
@@ -245,12 +249,12 @@ else:
    
 
     fig2 = go.Figure(layout =go.Layout(
-    xaxis = dict(showgrid=True,title='<b>Okres', ticklabelmode="period", dtick="M1", tickformat="%b\n%",tickangle=45,tickvals=list(DF.Okres.astype('string')),
-                            ticktext = DF.Okres.astype('string'),linecolor='black',tickwidth=1,tickcolor='black',ticks="outside"),
+    xaxis = dict(showgrid=True,title='<b>Okres', ticklabelmode="period", dtick="M1", tickformat="%b\n%",tickangle=45,tickvals=list(DF1.Okres.astype('string')),
+                            ticktext = DF1.Okres.astype('string'),linecolor='black',tickwidth=1,tickcolor='black',ticks="outside"),
     yaxis = dict(linecolor='black',title='<b>Sezonowość',tickwidth=1,tickcolor='black',ticks="outside",gridcolor='black')
     ))
     fig2.add_trace(go.Scatter(
-        x = DF.Okres,
+        x = DF1.Okres,
         y = decomp.seasonal.values,
 
         line_color = 'navy',
@@ -267,12 +271,12 @@ else:
     
     
     fig3 = go.Figure(layout =go.Layout(
-    xaxis = dict(showgrid=True,title='<b>Okres', ticklabelmode="period", dtick="M1", tickformat="%b\n%",tickangle=45,tickvals=list(DF.Okres.astype('string')),
-                            ticktext = DF.Okres.astype('string'),linecolor='black',tickwidth=1,tickcolor='black',ticks="outside"),
+    xaxis = dict(showgrid=True,title='<b>Okres', ticklabelmode="period", dtick="M1", tickformat="%b\n%",tickangle=45,tickvals=list(DF1.Okres.astype('string')),
+                            ticktext = DF1.Okres.astype('string'),linecolor='black',tickwidth=1,tickcolor='black',ticks="outside"),
     yaxis = dict(linecolor='black',title='<b>Szum',tickwidth=1,tickcolor='black',ticks="outside",gridcolor='black')
     ))
     fig3.add_trace(go.Scatter(
-        x = DF.Okres,
+        x = DF1.Okres,
         y = decomp.resid.values,
 
         line_color = 'navy',
