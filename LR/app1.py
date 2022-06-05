@@ -496,8 +496,8 @@ else:
             color="Black"),title='<b>Sprzedaż ilościowa Gripexu Hot w podziale na miesiące',title_x=0.5)
     
 
-    rr.plotly_chart(fig)
-    rr.plotly_chart(fig1)
+    rr.plotly_chart(fig,True)
+    rr.plotly_chart(fig1,True)
 
     
     # holt winters 
