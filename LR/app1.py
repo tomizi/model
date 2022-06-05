@@ -424,7 +424,7 @@ else:
     st.header(':clock330: Model ARIMA')
     ll, rr = st.columns((1,3))
     
-    from statsmodels.tsa.arima_model import ARIMA
+    from statsmodels.tsa.arima.model import ARIMA
     import warnings
     warnings.filterwarnings('ignore')
     arima_model = ARIMA(df.iloc[:,2],order=(2,0,0))
