@@ -225,7 +225,7 @@ else:
     DF1.set_index(DF1.miesiac,inplace=True)
     DF1
 
-    decomp = seasonal_decompose(DF1.iloc[:,[1]])
+    decomp = seasonal_decompose(DF1.iloc[:,[9]])
     
     fig1 = go.Figure(layout =go.Layout(
     xaxis = dict(showgrid=True,title='<b>Okres', ticklabelmode="period", dtick="M1", tickformat="%b\n%",tickangle=45,tickvals=list(DF1.Okres.astype('string')),
