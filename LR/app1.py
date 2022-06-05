@@ -219,7 +219,8 @@ else:
     l1,c1,r1 = st.columns(3)
     
     
-    
+    from statsmodels.tsa.seasonal import seasonal_decompose
+    decomp = seasonal_decompose(DF.iloc[:,[1]])
     
     fig1 = go.Figure(layout =go.Layout(
     xaxis = dict(showgrid=True,title='<b>Okres', ticklabelmode="period", dtick="M1", tickformat="%b\n%",tickangle=45,tickvals=list(DF.Okres.astype('string')),
