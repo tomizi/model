@@ -211,7 +211,77 @@ else:
             size=18,
             color="Black"),title='<b>Sprzedaż ilościowa Gripexu Hot w podziale na miesiące',title_x=0.5)
     st.plotly_chart(fig,True)
-    st.subheader('Zakłada się, że obserwowany przebieg zjawiska składa się z części systematycznej (trend, sezonowość) w oparciu, o które buduje się model. Dodatkowo wyróżnia się część przypadkową (szum). Chcąc wyodrębnić wymienione składniki dokonuje się '+r'\textcolor{blue}{dekompozycji szeregu czasowego}')
+    st.subheader('Zakłada się, że obserwowany przebieg zjawiska składa się z części systematycznej (trend, sezonowość) w oparciu, o które buduje się model. Dodatkowo wyróżnia się część przypadkową (szum). Chcąc wyodrębnić wymienione składniki dokonuje się dekompozycji szeregu czasowego')
+    st.header('Dekompozycja szeregu czasowego')
+    l1,c1,r1 = columns(3)
+    fig1 = go.Figure(layout =go.Layout(
+    xaxis = dict(showgrid=True,title='<b>Okres', ticklabelmode="period", dtick="M1", tickformat="%b\n%",tickangle=45,tickvals=list(dane.Okres.astype('string')),
+                            ticktext = dane.Okres.astype('string'),linecolor='black',tickwidth=1,tickcolor='black',ticks="outside"),
+    yaxis = dict(linecolor='black',title='<b>Trend',tickwidth=1,tickcolor='black',ticks="outside",gridcolor='black')
+    ))
+    fig1.add_trace(go.Scatter(
+        x = df.Okres,
+        y = decomp.trend.values,
+
+        line_color = 'navy',
+        mode='lines+markers',
+        marker_size=8,
+        line_width=4
+        ))
+
+
+    
+    fig1.update_layout(plot_bgcolor='white',font=dict(
+            size=18,
+            color="Black"),title='<b>Dekompozycja - trend',title_x=0.5,height=300)
+   
+
+    fig2 = go.Figure(layout =go.Layout(
+    xaxis = dict(showgrid=True,title='<b>Okres', ticklabelmode="period", dtick="M1", tickformat="%b\n%",tickangle=45,tickvals=list(dane.Okres.astype('string')),
+                            ticktext = dane.Okres.astype('string'),linecolor='black',tickwidth=1,tickcolor='black',ticks="outside"),
+    yaxis = dict(linecolor='black',title='<b>Sezonowość',tickwidth=1,tickcolor='black',ticks="outside",gridcolor='black')
+    ))
+    fig2.add_trace(go.Scatter(
+        x = dane.Okres,
+        y = decomp.seasonal.values,
+
+        line_color = 'navy',
+        mode='lines+markers',
+        marker_size=8,
+        line_width=4
+        ))
+
+
+    # Use string to set start xaxis range
+    fig2.update_layout(plot_bgcolor='white',font=dict(
+            size=18,
+            color="Black"),title='<b>Dekompozycja - sezonowość',title_x=0.5,height=300)
+    
+    
+    fig3 = go.Figure(layout =go.Layout(
+    xaxis = dict(showgrid=True,title='<b>Okres', ticklabelmode="period", dtick="M1", tickformat="%b\n%",tickangle=45,tickvals=list(dane.Okres.astype('string')),
+                            ticktext = dane.Okres.astype('string'),linecolor='black',tickwidth=1,tickcolor='black',ticks="outside"),
+    yaxis = dict(linecolor='black',title='<b>Szum',tickwidth=1,tickcolor='black',ticks="outside",gridcolor='black')
+    ))
+    fig3.add_trace(go.Scatter(
+        x = dane.Okres,
+        y = decomp.resid.values,
+
+        line_color = 'navy',
+        mode='markers',
+        marker_size=10,
+        ))
+    fig3.add_hline(y=0,line_width=3,line_color='black')
+
+    # Use string to set start xaxis range
+    fig3.update_layout(plot_bgcolor='white',font=dict(
+            size=18,
+            color="Black"),title='<b>Dekompozycja - szum',title_x=0.5,height=300)
+    
+    l1.plotly_chart(fig1)
+    c1.plotly_chart(fig2)
+    r1.plotly_chart(fig3)
+
     st.markdown('---')
     
     
