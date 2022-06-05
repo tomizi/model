@@ -213,7 +213,14 @@ else:
     st.plotly_chart(fig,True)
     st.subheader('Zakłada się, że obserwowany przebieg zjawiska składa się z części systematycznej (trend, sezonowość) w oparciu, o które buduje się model. Dodatkowo wyróżnia się część przypadkową (szum). Chcąc wyodrębnić wymienione składniki dokonuje się dekompozycji szeregu czasowego')
     st.header('Dekompozycja szeregu czasowego')
-    l1,c1,r1 = columns(3)
+    
+    
+    
+    l1,c1,r1 = st.columns(3)
+    
+    
+    
+    
     fig1 = go.Figure(layout =go.Layout(
     xaxis = dict(showgrid=True,title='<b>Okres', ticklabelmode="period", dtick="M1", tickformat="%b\n%",tickangle=45,tickvals=list(dane.Okres.astype('string')),
                             ticktext = dane.Okres.astype('string'),linecolor='black',tickwidth=1,tickcolor='black',ticks="outside"),
