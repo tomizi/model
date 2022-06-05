@@ -428,6 +428,7 @@ else:
     import warnings
     warnings.filterwarnings('ignore')
     arima_model = ARIMA(df.iloc[:,2],order=(2,0,0))
+    warnings.filterwarnings('ignore')
     model = arima_model.fit()
     
     fig = go.Figure(layout =go.Layout(
