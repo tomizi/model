@@ -424,10 +424,11 @@ else:
     st.header(':clock330: Model ARIMA')
     ll, rr = st.columns((1,3))
     ll.subheader('Wybierz parametry modelu: ')
-    ll.subheader('LOREM IPSUM ......................................................................................... Lorem Ipsum')
-    p = ll.number_input('Wybierz p:',min_value=0,max_value=18,step=1)
-    d = ll.number_input('Wybierz d:',min_value=0,max_value=2,step=1)
-    q = ll.number_input('Wybierz q:',min_value=0,max_value=10,step=1)
+    ll.subheader('Metoda ARIMA pozwala na dostosowanie modelu, określając kolejność autoregresji, różnicowania i średniej kroczącej, jak również sezonowych odpowiedników tych składników. Tym samym umożliwiając dokładne modelowanie szeregów czasowych. ')
+    p = ll.number_input('Wybierz p (parametr autoregresji):',min_value=0,max_value=18,step=1)
+    d = ll.number_input('Wybierz d (stopień integracji szeregu):',min_value=0,max_value=2,step=1)
+    q = ll.number_input('Wybierz q (parametr średniej ruchomej):',min_value=0,max_value=10,step=1)
+    ll.subheader('pozwala na utworzenie modelu autoregresyjnej zintegrowanej średniej ruchomej (ARIMA) umożliwiającego dokładne modelowanie szeregów czasowych. 
     
     ll.markdown('###')
     ll.markdown('###')
@@ -611,7 +612,7 @@ else:
     test_predictions = fitted_model.forecast(36) 
     
     fig1 = go.Figure(layout =go.Layout(
-    xaxis = dict(showgrid=True,tickfont=dict(size=14),title='<b>Okres', ticklabelmode="period", dtick="M1", tickformat="%b\n%",tickangle=45,tickvals=okresy[:72],
+    xaxis = dict(showgrid=True,tickfont=dict(size=10),title='<b>Okres', ticklabelmode="period", dtick="M1", tickformat="%b\n%",tickangle=45,tickvals=okresy[:72],
                             ticktext = okresy[:72],linecolor='black',tickwidth=1,tickcolor='black',ticks="outside"),
     yaxis = dict(linecolor='black',title='<b>Ilość sprzedaży [tyś. sztuk]',tickwidth=1,tickcolor='black',ticks="outside",gridcolor='black')
     ))
