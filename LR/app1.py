@@ -491,7 +491,7 @@ else:
         name = "ARIMA_pred",
         mode='lines+markers',
         marker_size=6,
-        line_color = 'dodgerblue',
+        line_color = 'green',
         opacity = 0.8))
 
     # Use string to set start xaxis range
@@ -502,6 +502,25 @@ else:
 
     rr.plotly_chart(fig,True)
     rr.plotly_chart(fig1,True)
+    
+    st.header('Prognoza na najbliższe lata:')
+    a,b = st.columns(2)
+    b1 = b.number_input('Podaj rok:',min_value=2022,max_value=2024,step=1)
+    a1 = a.number_input('Podaj miesiąc:',min_value=1,max_value=12,step=1)
+    
+    tab = list(df.iloc[[34,35],2]) + list(model.predict(36,72))
+    a = 0
+    t = []
+    for i in range(2022,2027):
+        for j in range(1,13):
+            t.append([j,i,a])
+            a+=1
+    def szukaj(m,r):
+        for i in t:
+            if i[0] == m and i[1] == r:
+                return i[2]
+    st.subheader('Przewidziana ilość sprzedaży w '+str(int(a1))+'-'+str(int(b1))+' to: '+str(round(tab[szukaj(a1,b1)],0)) )
+
 
     
     # holt winters 
