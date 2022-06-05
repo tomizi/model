@@ -423,13 +423,15 @@ else:
     
     st.header(':clock330: Model ARIMA')
     ll, rr = st.columns((1,3))
+    
     from statsmodels.tsa.arima_model import ARIMA
+    df
     arima_model = ARIMA(df.iloc[:,2],order=(2,0,0))
     model = arima_model.fit()
     
     fig = go.Figure(layout =go.Layout(
-    xaxis = dict(showgrid=True,title='<b>Okres', ticklabelmode="period", dtick="M1", tickformat="%b\n%",tickangle=45,tickvals=list(dane.Okres.astype('string')),
-                            ticktext = dane.Okres.astype('string'),linecolor='black',tickwidth=1,tickcolor='black',ticks="outside"),
+    xaxis = dict(showgrid=True,title='<b>Okres', ticklabelmode="period", dtick="M1", tickformat="%b\n%",tickangle=45,tickvals=list(df.Okres.astype('string')),
+                            ticktext = df.Okres.astype('string'),linecolor='black',tickwidth=1,tickcolor='black',ticks="outside"),
     yaxis = dict(linecolor='black',title='<b>Ilość sprzedaży [tyś. sztuk]',tickwidth=1,tickcolor='black',ticks="outside",gridcolor='black')
     ))
     fig.add_trace(go.Scatter(
@@ -459,7 +461,7 @@ else:
     
     # holt winters 
     # single exponential smoothing
-    from statsmodels.tsa.holtwinters import SimpleExpSmoothing   
+    #from statsmodels.tsa.holtwinters import SimpleExpSmoothing   
     # double and triple exponential smoothing
     from statsmodels.tsa.holtwinters import ExponentialSmoothing
     
