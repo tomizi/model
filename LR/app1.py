@@ -423,8 +423,11 @@ else:
     
     st.header(':clock330: Model ARIMA')
     ll, rr = st.columns((1,3))
-    ll.subheader('Wybierz parametry modelu: ')
+    
     ll.subheader('Metoda ARIMA pozwala na dostosowanie modelu, określając kolejność autoregresji, różnicowania i średniej kroczącej, jak również sezonowych odpowiedników tych składników. Tym samym umożliwiając dokładne modelowanie szeregów czasowych. ')
+    ll.markdown('###')
+    ll.subheader('Wybierz parametry modelu: ')
+    ll.markdown('###')
     p = ll.number_input('Wybierz p (parametr autoregresji):',min_value=0,max_value=18,step=1)
     d = ll.number_input('Wybierz d (stopień integracji szeregu):',min_value=0,max_value=2,step=1)
     q = ll.number_input('Wybierz q (parametr średniej ruchomej):',min_value=0,max_value=10,step=1)
@@ -440,10 +443,18 @@ else:
     arima_model = ARIMA(df.iloc[:,2],order=(p,d,q))
     model = arima_model.fit()
     
+    
+    from sklearn.metrics import mean_absolute_error,mean_squared_error
     MSE=mean_squared_error(y, list(model.predict().values))
+    MAE=mean_absolute_error(y, list(model.predict().values))
     RMSE=np.sqrt(MSE)
-    ll.write('**Błąd średniokwadratowy:**')
-    ll.warning('**RMSE: '+str(round(RMSE,3))+'**')
+    ll.subheader('Średni błąd absolutny: ')
+    ll.info('**MAE: '+str(round(MAE,3))+'**')
+    ll.subheader('Błąd średniokwadratowy: ')
+    ll.warning('RMSE: '+str(round(RMSE,3))+'**')
+    
+    
+   
     
     fig = go.Figure(layout =go.Layout(
     xaxis = dict(showgrid=True,title='<b>Okres', ticklabelmode="period", dtick="M1", tickformat="%b\n%",tickangle=45,tickvals=list(df.Okres.astype('string')),
@@ -562,9 +573,9 @@ else:
     MAE=mean_absolute_error(y, list(df['HWES']))
     RMSE=np.sqrt(MSE)
     lc.subheader('Średni błąd absolutny: ')
-    lc.info('MAE :'+str(round(MAE,3)))
+    lc.info('**MAE :'+str(round(MAE,3))+'**')
     lc.subheader('Błąd średniokwadratowy: ')
-    lc.warning('RMSE :'+str(round(RMSE,3)))
+    lc.warning('**RMSE :'+str(round(RMSE,3))+'**')
   
 
    
