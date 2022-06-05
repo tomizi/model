@@ -223,7 +223,7 @@ else:
     DF1 = DF
     DF1['miesiac'] = pd.to_datetime(DF1['Okres'])
     DF1.set_index(DF1.miesiac,inplace=True)
-    DF1
+    
 
     decomp = seasonal_decompose(DF1.iloc[:,[9]])
     
@@ -252,7 +252,7 @@ else:
     fig2 = go.Figure(layout =go.Layout(
     xaxis = dict(showgrid=True,title='<b>Okres', ticklabelmode="period", dtick="M1", tickformat="%b\n%",tickangle=45,tickvals=list(DF1.Okres.astype('string')),
                             ticktext = DF1.Okres.astype('string'),linecolor='black',tickwidth=1,tickcolor='black',ticks="outside"),
-    yaxis = dict(linecolor='black',title='<b>Sezonowość',tickwidth=1,tickcolor='black',ticks="outside",gridcolor='black')
+    yaxis = dict(linecolor='black',title='<b>Sezonowość',tickwidth=1,tickcolor='black',ticks="outside",gridcolor='black',tickfont=dict(size=12))
     ))
     fig2.add_trace(go.Scatter(
         x = DF1.Okres,
