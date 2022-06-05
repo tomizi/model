@@ -265,7 +265,7 @@ else:
         ))
 
 
-    # Use string to set start xaxis range
+   
     fig2.update_layout(plot_bgcolor='white',font=dict(
             size=18,
             color="Black"),title='<b>Dekompozycja - sezonowość',title_x=0.5,height=300)
@@ -286,7 +286,7 @@ else:
         ))
     fig3.add_hline(y=0,line_width=3,line_color='black')
 
-    # Use string to set start xaxis range
+    
     fig3.update_layout(plot_bgcolor='white',font=dict(
             size=18,
             color="Black"),title='<b>Dekompozycja - szum',title_x=0.5,height=300)
@@ -417,6 +417,8 @@ else:
             size=18,
             color="Black"),title='<b>Sprzedaż ilościowa Gripexu Hot - prognozy vs. rzeczywistość',title_x=0.5)
     rc.plotly_chart(fig,True)
+    pred_mean = df.iloc[len(df.iloc[:,2])-k:,2].mean()
+    st.subheader('Przewidziana ilość sprzedaży w 3-2022 to: '+str(k))
     st.markdown('---')
     
     # holt winters 
@@ -544,7 +546,7 @@ else:
         for i in t:
             if i[0] == m and i[1] == r:
                 return i[2]
-    st.subheader('Przewidziana ilość sprzedaży w '+str(int(a1))+'-'+str(int(b1))+' to:'+str(round(tab[szukaj(a1,b1)],0)) )
+    st.subheader('Przewidziana ilość sprzedaży w '+str(int(a1))+'-'+str(int(b1))+' to: '+str(round(tab[szukaj(a1,b1)],0)) )
 
     
 
