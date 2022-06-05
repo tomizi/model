@@ -211,7 +211,7 @@ else:
             size=18,
             color="Black"),title='<b>Sprzedaż ilościowa Gripexu Hot w podziale na miesiące',title_x=0.5)
     st.plotly_chart(fig,True)
-    st.subheader('Zakłada się, że obserwowany przebieg zjawiska składa się z części systematycznej (trend, sezonowość) w oparciu, o które buduje się model. Dodatkowo wyróżnia się część przypadkową (szum). Chcąc wyodrębnić wymienione składniki dokonuje się'+'**dekompozycji szeregu czasowego**')
+    st.subheader('Zakłada się, że obserwowany przebieg zjawiska składa się z części systematycznej (trend, sezonowość) w oparciu, o które buduje się model. Dodatkowo wyróżnia się część przypadkową (szum). Chcąc wyodrębnić wymienione składniki dokonuje się '+'<b>dekompozycji szeregu czasowego')
     st.markdown('---')
     
     
