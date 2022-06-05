@@ -425,7 +425,8 @@ else:
     ll, rr = st.columns((1,3))
     
     from statsmodels.tsa.arima_model import ARIMA
-    df
+    import warnings
+    warnings.filterwarnings('ignore')
     arima_model = ARIMA(df.iloc[:,2],order=(2,0,0))
     model = arima_model.fit()
     
