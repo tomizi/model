@@ -437,8 +437,8 @@ else:
     yaxis = dict(linecolor='black',title='<b>Ilość sprzedaży [tyś. sztuk]',tickwidth=1,tickcolor='black',ticks="outside",gridcolor='black')
     ))
     fig.add_trace(go.Scatter(
-        x = dane.Okres,
-        y = dane['GRIPEX HOT        '],
+        x = df.Okres,
+        y = df['GRIPEX HOT        '],
         name = "GRIPEX HOT",
         line_color = 'dodgerblue',
         mode='lines+markers',
@@ -456,9 +456,48 @@ else:
     fig.update_layout(plot_bgcolor='white',font=dict(
             size=18,
             color="Black"),title='<b>Sprzedaż ilościowa Gripexu Hot w podziale na miesiące',title_x=0.5)
-    fig.show()
+    
+    
+    t = []
+    for i in range(2022,2027):
+        for j in range(1,13):
+            if j>9:
+                t.append(str(i)+'-'+str(j))
+            else:
+                t.append(str(i)+'-'+'0'+str(j))
+    u = list(df.Okres.astype('string'))
+    okresy = u+t[2:]
+    
+    fig1 = go.Figure(layout =go.Layout(
+    xaxis = dict(showgrid=True,tickfont=dict(size=10),title='<b>Okres', ticklabelmode="period", dtick="M1", tickformat="%b\n%",tickangle=45,tickvals=okresy[:72],
+                            ticktext = okresy[:72],linecolor='black',tickwidth=1,tickcolor='black',ticks="outside"),
+    yaxis = dict(linecolor='black',title='<b>Ilość sprzedaży [tyś. sztuk]',tickwidth=1,tickcolor='black',ticks="outside",gridcolor='black',
+                )
+    ))
+    fig1.add_trace(go.Scatter(
+        x = okresy[:36],
+        y = df['GRIPEX HOT        '],
+        name = "GRIPEX HOT",
+        line_color = 'dodgerblue',
+        mode='lines+markers',
+        line_width=3
+        ))
+    fig1.add_trace(go.Scatter(
+        x = okresy[36:],
+        y = model.predict(36,72),
+        name = "HWES3_MUL",
+        mode='lines+markers',
+        line_color = 'green',
+        opacity = 0.8))
+
+    # Use string to set start xaxis range
+    fig.update_layout(plot_bgcolor='white',font=dict(
+            size=18,
+            color="Black"),title='<b>Sprzedaż ilościowa Gripexu Hot w podziale na miesiące',title_x=0.5)
+    
 
     rr.plotly_chart(fig)
+    rr.plotly_chart(fig1)
 
     
     # holt winters 
