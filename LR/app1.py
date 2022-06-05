@@ -223,6 +223,7 @@ else:
     DF1 = DF
     DF1['miesiac'] = pd.to_datetime(DF1['Okres'])
     DF1.set_index(DF1.miesiac,inplace=True)
+    DF1
 
     decomp = seasonal_decompose(DF1.iloc[:,[1]])
     
