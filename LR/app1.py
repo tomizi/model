@@ -424,12 +424,21 @@ else:
     st.header(':clock330: Model ARIMA')
     ll, rr = st.columns((1,3))
     
+    ll.subheader('LOREM IPSUM ......................................................................................... Lorem Ipsum')
+    ll.markdown('###')
+    ll.markdown('###')
+    ll.markdown('###')
+    
+    
+    
     from statsmodels.tsa.arima.model import ARIMA
-    import warnings
-    warnings.filterwarnings('ignore')
     arima_model = ARIMA(df.iloc[:,2],order=(2,0,0))
-    warnings.filterwarnings('ignore')
     model = arima_model.fit()
+    
+    MSE=mean_squared_error(y, list(model.predict().values))
+    RMSE=np.sqrt(MSE)
+    ll.write('**Błąd średniokwadratowy:**')
+    ll.warning('**RMSE: '+str(round(RMSE,3))+'**')
     
     fig = go.Figure(layout =go.Layout(
     xaxis = dict(showgrid=True,title='<b>Okres', ticklabelmode="period", dtick="M1", tickformat="%b\n%",tickangle=45,tickvals=list(df.Okres.astype('string')),
@@ -520,7 +529,7 @@ else:
             if i[0] == m and i[1] == r:
                 return i[2]
     st.subheader('Przewidziana ilość sprzedaży w '+str(int(a1))+'-'+str(int(b1))+' to: '+str(round(tab[szukaj(a1,b1)],0)) )
-
+    st.markdown('---')
 
     
     # holt winters 
