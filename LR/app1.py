@@ -451,7 +451,7 @@ else:
     ll.subheader('Średni błąd absolutny: ')
     ll.info('**MAE: '+str(round(MAE,3))+'**')
     ll.subheader('Błąd średniokwadratowy: ')
-    ll.warning('RMSE: '+str(round(RMSE,3))+'**')
+    ll.warning('**RMSE: '+str(round(RMSE,3))+'**')
     
     
    
