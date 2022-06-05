@@ -427,7 +427,7 @@ else:
     ll.subheader('LOREM IPSUM ......................................................................................... Lorem Ipsum')
     p = ll.number_input('Wybierz p:',min_value=0,max_value=18,step=1)
     d = ll.number_input('Wybierz d:',min_value=0,max_value=2,step=1)
-    q = ll.number_input('Wybierz q:',min_value=0,max_value=6,step=1)
+    q = ll.number_input('Wybierz q:',min_value=0,max_value=10,step=1)
     
     ll.markdown('###')
     ll.markdown('###')
@@ -647,8 +647,8 @@ else:
     
     st.header('Prognoza na najbliższe lata:')
     a,b = st.columns(2)
-    b1 = b.number_input('Podaj rok:',min_value=2022,max_value=2024,step=1)
-    a1 = a.number_input('Podaj miesiąc:',min_value=1,max_value=12,step=1)
+    b1 = b.number_input('Podaj rok : ',min_value=2022,max_value=2024,step=1)
+    a1 = a.number_input('Podaj miesiąc : ',min_value=1,max_value=12,step=1)
     
     tab = list(df.iloc[[34,35],2]) + list(test_predictions.values)
     a = 0
