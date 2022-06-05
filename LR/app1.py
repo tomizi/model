@@ -425,9 +425,9 @@ else:
     ll, rr = st.columns((1,3))
     ll.subheader('Wybierz parametry modelu: ')
     ll.subheader('LOREM IPSUM ......................................................................................... Lorem Ipsum')
-    p = lc.number_input('Wybierz p:',min_value=1,max_value=10,step=1)
-    d = lc.number_input('Wybierz d:',min_value=1,max_value=10,step=1)
-    q = lc.number_input('Wybierz q:',min_value=1,max_value=10,step=1)
+    p = ll.number_input('Wybierz p:',min_value=1,max_value=10,step=1)
+    d = ll.number_input('Wybierz d:',min_value=1,max_value=10,step=1)
+    q = ll.number_input('Wybierz q:',min_value=1,max_value=10,step=1)
     
     ll.markdown('###')
     ll.markdown('###')
