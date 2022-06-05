@@ -428,7 +428,7 @@ else:
     p = ll.number_input('Wybierz p (parametr autoregresji):',min_value=0,max_value=18,step=1)
     d = ll.number_input('Wybierz d (stopień integracji szeregu):',min_value=0,max_value=2,step=1)
     q = ll.number_input('Wybierz q (parametr średniej ruchomej):',min_value=0,max_value=10,step=1)
-    ll.subheader('pozwala na utworzenie modelu autoregresyjnej zintegrowanej średniej ruchomej (ARIMA) umożliwiającego dokładne modelowanie szeregów czasowych. 
+     
     
     ll.markdown('###')
     ll.markdown('###')
