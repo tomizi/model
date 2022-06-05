@@ -418,7 +418,7 @@ else:
             color="Black"),title='<b>Sprzedaż ilościowa Gripexu Hot - prognozy vs. rzeczywistość',title_x=0.5)
     rc.plotly_chart(fig,True)
     pred_mean = df.iloc[len(df.iloc[:,2])-k:,2].mean()
-    st.subheader('Przewidziana ilość sprzedaży w 3-2022 to: '+str(k))
+    st.subheader('Przewidziana ilość sprzedaży w 3-2022 to: '+str(pred_mean))
     st.markdown('---')
     
     # holt winters 
