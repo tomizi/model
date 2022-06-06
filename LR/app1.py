@@ -35,7 +35,7 @@ if Model == 'Uzupełnianie danych':
     options=DF['rok'].unique(),
     default=['2019','2021'])
     
-    new_title = '<b style="font-family:sans-serif;text-align: center; color:rgb(0, 0, 180); font-size: 62px;">          Istotni Statystycznie</p>'
+    new_title = '<b style="font-family:sans-serif;text-align: center; color:rgb(0, 0, 180); font-size: 62px;">Istotni Statystycznie ***</p>'
     st.markdown(':star::star::star:'+new_title, unsafe_allow_html=True)
     st.title(':bar_chart: Model uzupełniający dane dla leków')
     st.header('Regresja wieloraka')
