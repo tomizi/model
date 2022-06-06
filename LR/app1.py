@@ -35,7 +35,7 @@ if Model == 'Uzupełnianie danych':
     options=DF['rok'].unique(),
     default=['2019','2021'])
     
-    new_title = '<b style="font-family:sans-serif;text-align: center; color:rgb(0, 0, 180); font-size: 62px;">W Chuj Istotni Statystycznie **********************</p>'
+    new_title = '<b style="font-family:sans-serif;text-align: center; color:rgb(0, 0, 180); font-size: 62px;">Istotni Statystycznie ***</p>'
     st.markdown(new_title, unsafe_allow_html=True)
     st.title(':bar_chart: Model uzupełniający dane dla leków')
     st.header('Regresja wieloraka')
@@ -186,6 +186,8 @@ if Model == 'Uzupełnianie danych':
     lek2 = rc1.number_input('Podaj ilość sprzedaży drugiego leku - '+str(wybrane[1])+': ',value=0,step=100)
     st.subheader(f'\t Przewidziana ilość sprzedaży GRIPEXU HOT wynosi: {Lek_pred(lek1,lek2)}')
 else:
+    new_title = '<b style="font-family:sans-serif;text-align: center; color:rgb(0, 0, 180); font-size: 62px;">Istotni Statystycznie ***</p>'
+    st.markdown(new_title, unsafe_allow_html=True)
     st.title(':chart_with_upwards_trend: Model prognostyczny dla leków')
     st.header('Szeregi czasowe')
     st.subheader('Szereg czasowy to ciąg obserwacji przedstawiający formowanie się danego zjawiska w kolejnych okresach czasu (dniach, miesiącach, kwartałach, latach). '+
