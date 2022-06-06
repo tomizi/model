@@ -38,9 +38,9 @@ if Model == 'Uzupełnianie danych':
     
     st.title(':bar_chart: Model uzupełniający dane dla leków')
     st.header('Regresja wieloraka')
-    st.subheader('Jest to metoda pozwalająca szacować wartosci danej wielkosci za pomocą znanych już wartosci innych wielkosci. Polega na '+
-         'przedstawieniu w postaci równania liniowego zależnoci zmiennej objasnianej w oparciu o zmienne objasniające. Poniżej znajdują się dane w postaci tabelarycznej użyte do budowy modelu. Przedstawiają one ilosc sprzedaży danego leku w poszczególnych miesiącach od marca 2019 do lutego 2022.')
-    st.subheader('Dwie pierwsze kolumny to zmienne identyfikujące. Kolejnych siedem to zmiennej objasniajace (kolor niebieski). Ostatnia kolumna (kolor czerwony) przedstawia zmienną, której wartosci będziemy szacować - zmienna objasniana. Chcemy przewidywać ilosć sprzedaży Gripexu Hot w kolejnych miesiącach na podstawie wybranych leków tego samego typu.')
+    st.subheader('Jest to metoda pozwalająca szacować wartości danej wielkości za pomocą znanych już wartości innych wielkości. Polega na '+
+         'przedstawieniu w postaci równania liniowego zależności zmiennej objaśnianej w oparciu o zmienne objaśniające. Poniżej znajdują się dane w postaci tabelarycznej użyte do budowy modelu. Przedstawiają one ilość sprzedaży danego leku w poszczególnych miesiącach od marca 2019 do lutego 2022.')
+    st.subheader('Dwie pierwsze kolumny to zmienne identyfikujące. Kolejnych siedem to zmiennej objaśniające (kolor niebieski). Ostatnia kolumna (kolor czerwony) przedstawia zmienną, której wartości będziemy szacować - zmienna objaśniana. Chcemy przewidywać ilość sprzedaży Gripexu Hot w kolejnych miesiącach na podstawie wybranych leków tego samego typu.')
     st.markdown('##')
     DF_selection= DF.query(
         "rok == @rok")
@@ -51,8 +51,8 @@ if Model == 'Uzupełnianie danych':
     st.dataframe(DF_selection.style.set_properties(**{'color': 'red'}, subset=['GRIPEX HOT        '],axis=0).set_properties(**{'color':'blue'},subset=DF.iloc[:,2:9].columns,axis=0))
     st.markdown('---')
     st.header(':cyclone: Korelacja zmiennych')
-    st.subheader('W celu sprawdzenia "mocy" zależnosci między poszczególnymi zmiennymi budujemy macierz korealacji. Na przecięciach kolumn z wierszami znajdują się wartosci współczyników korelacji liniowej - Pearsona. Liczba ta miesci się w zakresie od -1 do 1. Im ta liczba jest wieksza co do wartoci bezwzglednej tym zależnosc liniowa miedzy dwoma zmiennymi rosnie.'+
-                 ' Obok dla lepszego rozeznania widnieją wykresy rozrzutu. Są one potwierdzeniem na liniową zależnosć dla zmiennych z powyższymi warunkami.')
+    st.subheader('W celu sprawdzenia "mocy" zależności między poszczególnymi zmiennymi budujemy macierz korealacji. Na przecięciach kolumn z wierszami znajdują się wartości współczynników korelacji liniowej - Pearsona. Liczba ta mieści się w zakresie od -1 do 1. Im ta liczba jest większa co do wartości bezwzględnej tym zależność liniowa między dwoma zmiennymi rośnie.'+
+                 ' Obok dla lepszego rozeznania widnieją wykresy rozrzutu. Są one potwierdzeniem na liniową zależność dla zmiennych z powyższymi warunkami.')
 
     cols=DF_selection.iloc[:,2:].columns
     cm = np.corrcoef(DF_selection[cols].values.T)
@@ -75,10 +75,10 @@ if Model == 'Uzupełnianie danych':
     lc.plotly_chart(fig)
     rc.plotly_chart(fig1)
 
-    st.subheader('Chcielibysmy aby zmienne objasniane były mocno skorelowane ze zmienną objasnianą i jednoczesnie słabo skorelowane między sobą.')
+    st.subheader('Chcielibyśmy aby zmienne objaśniane były mocno skorelowane ze zmienną objaśnianą i jednocześnie słabo skorelowane między sobą.')
     st.markdown('---')
     st.header(':bulb: Budowa modelu i interpretacja')
-    st.subheader('Dużą zaletą modelu jest jego prostota. Nasze równanie będzie zawierało dwie zmienne objasniające. Selekcja predyktorów do modelu oparta jest o metodę RFE (Recursive Feature Elimination).')
+    st.subheader('Dużą zaletą modelu jest jego prostota. Nasze równanie będzie zawierało dwie zmienne objaśniające. Selekcja predyktorów do modelu oparta jest o metodę RFE (Recursive Feature Elimination).')
 
 
 
@@ -119,16 +119,16 @@ if Model == 'Uzupełnianie danych':
     st.info('**Współczyniki równania regresji: '+str(round(model_new.coef_[0],3))+', '+str(round(model_new.coef_[1],3))+'**')
     # Wyraz wolny w rownaniu regresji
     st.info('**Wyraz wolny w równaniu regresji: '+str(round(model_new.intercept_,3))+'**')
-    st.subheader('Wzrost zmiennej '+str(wybrane[0])+'o jedną jedonstkę powoduje zmianę wartosci GRIPEXU HOT o '+str(round(model_new.coef_[0],3))+', a wzrost zmiennej '+str(wybrane[1])+'o jedną jednostkę powoduję zmianę wartosci GRIPEXU HOT o '+str(round(model_new.coef_[1],3)))
+    st.subheader('Wzrost zmiennej '+str(wybrane[0])+'o jedną jedonstkę powoduje zmianę wartości GRIPEXU HOT o '+str(round(model_new.coef_[0],3))+', a wzrost zmiennej '+str(wybrane[1])+'o jedną jednostkę powoduję zmianę wartości GRIPEXU HOT o '+str(round(model_new.coef_[1],3)))
 
 
 
     st.success('**Równanie regresjii wielorakiej: '+str('GRIPEX HOT        ') + '= ' + '('+str(round(model_new.coef_[0],3)) + ')' + '\*'+str(wybrane[0])+ '+ ' + '('+str(round(model_new.coef_[1],3))+')'+'\*'+str(wybrane[1])+'+ '+'('+str(round(model_new.intercept_,3))+')'+'**')
 
-    st.subheader('Współczynik determinacji mówi nam jak dobrze model został dopasowany do danych. Im bliżej 1 tym lepsza jakosć modelu.')
+    st.subheader('Współczynnik determinacji mówi nam jak dobrze model został dopasowany do danych. Im bliżej 1 tym lepsza jakość modelu.')
 
     #Wpsolczynnik R^2 mozna tez policzyc tak:
-    st.error('**Współczynik determinacji: '+str(round(model_new.score(X_new,y),3))+'**')
+    st.error('**Współczynnik determinacji: '+str(round(model_new.score(X_new,y),3))+'**')
 
     #Przewidywana cena lekY na podstawie ceny lek1, lek2 w oparciu o zbudowany model regresji
     y_pred=model_new.predict(X_new)
@@ -151,14 +151,14 @@ if Model == 'Uzupełnianie danych':
     import math
     RMSE=math.sqrt(MSE)
     #print('standardowy bład oszacowania', RMSE)
-    st.subheader('Standardowy błąd oszacowania to statystyka, która informuje nas o tym jak srednio przewidziane wartosci odstają od faktycznych.')
+    st.subheader('Standardowy błąd oszacowania to statystyka, która informuje nas o tym jak średnio przewidziane wartości odstają od faktycznych.')
     st.warning('**Standardowy bład oszacowania: '+str(round(RMSE,3))+'**')
 
 
 
     st.markdown('---')
     st.header(':chart_with_downwards_trend: Wizualizacja wyników')
-    st.subheader('Wykres przedstawia zależnosć zmiennej objasnianej od dwóch zmiennych objasnijących. Dodatkowo widzimy płaszczyznę będącą wykresem funkcji regresji wielorakiej zbudowanej na podstawie modelu. Jeżeli model jest dobry to punkciki powinny znajdować się w niewielkim otoczeniu od płaszczyzny.')
+    st.subheader('Wykres przedstawia zależność zmiennej objaśnianej od dwóch zmiennych objaśnijących. Dodatkowo widzimy płaszczyznę będącą wykresem funkcji regresji wielorakiej zbudowanej na podstawie modelu. Jeżeli model jest dobry to punkciki powinny znajdować się w niewielkim otoczeniu od płaszczyzny.')
     x = np.linspace(0, DF_selection[wybrane[0]].max(), 100)
     y = np.linspace(0, DF_selection[wybrane[1]].max(), 100)
 
@@ -181,9 +181,9 @@ if Model == 'Uzupełnianie danych':
 
 
     lc1, rc1 = st.columns((3,3))
-    lek1 = lc1.number_input('Podaj ilosć sprzedaży pierwszego leku - '+str(wybrane[0])+': ',value=0,step=100)
-    lek2 = rc1.number_input('Podaj ilosć sprzedaży drugiego leku - '+str(wybrane[1])+': ',value=0,step=100)
-    st.subheader(f'\t Przewidziana ilosć sprzedaży GRIPEXU HOT wynosi: {Lek_pred(lek1,lek2)}')
+    lek1 = lc1.number_input('Podaj ilość sprzedaży pierwszego leku - '+str(wybrane[0])+': ',value=0,step=100)
+    lek2 = rc1.number_input('Podaj ilość sprzedaży drugiego leku - '+str(wybrane[1])+': ',value=0,step=100)
+    st.subheader(f'\t Przewidziana ilość sprzedaży GRIPEXU HOT wynosi: {Lek_pred(lek1,lek2)}')
 else:
     st.title(':chart_with_upwards_trend: Model prognostyczny dla leków')
     st.header('Szeregi czasowe')
