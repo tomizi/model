@@ -363,7 +363,7 @@ else:
     st.markdown('###')
     st.header('Prognoza na najbliższe lata:')
     lc1,rc1 = st.columns((2,2))
-    m,r = lc1.number_input('Podaj miesiąc: ',min_value=1,max_value=12,step=1),rc1.number_input('Podaj rok: ',min_value=2022,max_value=2026,step=1)
+    m,r = lc1.number_input('Podaj miesiąc: ',min_value=1,max_value=12,step=1),rc1.number_input('Podaj rok: ',value=2023,min_value=2022,max_value=2026,step=1)
     
     a = 36
     t = []
@@ -383,7 +383,7 @@ else:
     lc, rc = st.columns((1,3))
     lc.subheader('Sposób prognozowania tą metodą polega na policzeniu średniej z '+r'$k$'+' ostatnich okresów. Jest to sposób prognozy krótkoterminowej. Największa trudność polega na optymalnym doborze '+r'$k$.') 
    
-    k = lc.number_input('Wybierz k:',min_value=1,max_value=10,step=1)
+    k = lc.number_input('Wybierz k:',value=3,min_value=1,max_value=10,step=1)
     df['Rolling_Mean'] = df.iloc[:,2].rolling(k).mean()
     
     from sklearn.metrics import mean_squared_error
@@ -421,10 +421,10 @@ else:
             color="Black"),title='<b>Sprzedaż ilościowa Gripexu Hot - prognozy vs. rzeczywistość',title_x=0.5)
     rc.plotly_chart(fig,True)
     pred_mean = df.iloc[len(df.iloc[:,2])-k:,2].mean()
-    st.subheader('Przewidziana ilość sprzedaży w 3-2022 to: '+str(round(pred_mean,3)))
+    st.subheader('Przewidziana ilość sprzedaży w 3-2022 to: '+str(round(pred_mean,-1)))
     st.markdown('---')
     
-    st.header(':clock330: Model ARIMA')
+    st.header(':clock330: Model SARIMA')
     ll, rr = st.columns((1,3))
     
     ll.subheader('Metoda SARIMA pozwala na dostosowanie modelu, określając kolejność autoregresji, różnicowania i średniej kroczącej, jak również sezonowych odpowiedników tych składników. Tym samym umożliwiając dokładne modelowanie szeregów czasowych. ')
@@ -538,8 +538,8 @@ else:
     
     st.header('Prognoza na najbliższe lata:')
     a,b = st.columns(2)
-    b1 = b.number_input('Podaj rok:',min_value=2022,max_value=2024,step=1)
-    a1 = a.number_input('Podaj miesiąc:',min_value=1,max_value=12,step=1)
+    b1 = b.number_input('Podaj rok:',value=2024,min_value=2022,max_value=2024,step=1)
+    a1 = a.number_input('Podaj miesiąc:',value=6,min_value=1,max_value=12,step=1)
     
     tab = list(df.iloc[[34,35],2]) + list(model.predict(36,72))
     a = 0
@@ -552,7 +552,7 @@ else:
         for i in t:
             if i[0] == m and i[1] == r:
                 return i[2]
-    st.subheader('Przewidziana ilość sprzedaży w '+str(int(a1))+'-'+str(int(b1))+' to: '+str(round(tab[szukaj(a1,b1)],0)) )
+    st.subheader('Przewidziana ilość sprzedaży w '+str(int(a1))+'-'+str(int(b1))+' to: '+str(round(tab[szukaj(a1,b1)],-1)) )
     st.markdown('---')
 
     
@@ -667,8 +667,8 @@ else:
     
     st.header('Prognoza na najbliższe lata:')
     a,b = st.columns(2)
-    b1 = b.number_input('Podaj rok : ',min_value=2022,max_value=2024,step=1)
-    a1 = a.number_input('Podaj miesiąc : ',min_value=1,max_value=12,step=1)
+    b1 = b.number_input('Podaj rok : ',value=2024,min_value=2022,max_value=2024,step=1)
+    a1 = a.number_input('Podaj miesiąc : ',value=6,min_value=1,max_value=12,step=1)
     
     tab = list(df.iloc[[34,35],2]) + list(test_predictions.values)
     a = 0
@@ -681,7 +681,7 @@ else:
         for i in t:
             if i[0] == m and i[1] == r:
                 return i[2]
-    st.subheader('Przewidziana ilość sprzedaży w '+str(int(a1))+'-'+str(int(b1))+' to: '+str(round(tab[szukaj(a1,b1)],0)) )
+    st.subheader('Przewidziana ilość sprzedaży w '+str(int(a1))+'-'+str(int(b1))+' to: '+str(round(tab[szukaj(a1,b1)],-1)) )
 
     
 
