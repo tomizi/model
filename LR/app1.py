@@ -431,9 +431,10 @@ else:
     ll.markdown('###')
     ll.subheader('Wybierz parametry modelu: ')
     ll.markdown('###')
-    p = ll.number_input('Wybierz p (parametr autoregresji):',min_value=0,max_value=18,step=1)
-    d = ll.number_input('Wybierz d (stopień integracji szeregu):',min_value=0,max_value=2,step=1)
+    p = ll.number_input('Wybierz p (parametr autoregresji):',value=2,min_value=0,max_value=10,step=1)
+    d = ll.number_input('Wybierz d (stopień zróżnicowania szeregu):',min_value=0,max_value=2,step=1)
     q = ll.number_input('Wybierz q (parametr średniej ruchomej):',min_value=0,max_value=10,step=1)
+    s = ll.number_input('Wybierz s ():',value=12,min_value=0,max_value=12,step=1)
      
     
     ll.markdown('###')
@@ -442,9 +443,13 @@ else:
     
     
     
-    from statsmodels.tsa.arima.model import ARIMA
-    arima_model = ARIMA(df.iloc[:,2],order=(p,d,q))
-    model = arima_model.fit()
+    ##from statsmodels.tsa.arima.model import ARIMA
+    ##arima_model = ARIMA(df.iloc[:,2],order=(p,d,q))
+    ##model = arima_model.fit()
+    
+    from statsmodels.tsa.statespace.sarimax import SARIMAX
+    sarima_model = SARIMAX(df.iloc[:,2],order=(p,d,q),seasonal_order=(p,d,q,s))
+    model=sarima_model.fit()
     
     
     from sklearn.metrics import mean_absolute_error,mean_squared_error
@@ -476,7 +481,7 @@ else:
     fig.add_trace(go.Scatter(
         x = df.Okres,
         y = model.predict().values,
-        name = "ARIMA",
+        name = "SARIMA",
         mode='lines+markers',
         marker_size=6,
         line_color = 'dodgerblue',
@@ -516,7 +521,7 @@ else:
     fig1.add_trace(go.Scatter(
         x = okresy[36:],
         y = model.predict(36,72),
-        name = "ARIMA_pred",
+        name = "SARIMA_pred",
         mode='lines+markers',
         marker_size=6,
         line_color = 'green',
