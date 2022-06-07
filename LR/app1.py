@@ -427,14 +427,14 @@ else:
     st.header(':clock330: Model ARIMA')
     ll, rr = st.columns((1,3))
     
-    ll.subheader('Metoda ARIMA pozwala na dostosowanie modelu, określając kolejność autoregresji, różnicowania i średniej kroczącej, jak również sezonowych odpowiedników tych składników. Tym samym umożliwiając dokładne modelowanie szeregów czasowych. ')
+    ll.subheader('Metoda SARIMA pozwala na dostosowanie modelu, określając kolejność autoregresji, różnicowania i średniej kroczącej, jak również sezonowych odpowiedników tych składników. Tym samym umożliwiając dokładne modelowanie szeregów czasowych. ')
     ll.markdown('###')
     ll.subheader('Wybierz parametry modelu: ')
     ll.markdown('###')
     p = ll.number_input('Wybierz p (parametr autoregresji):',value=2,min_value=0,max_value=10,step=1)
     d = ll.number_input('Wybierz d (stopień zróżnicowania szeregu):',min_value=0,max_value=2,step=1)
     q = ll.number_input('Wybierz q (parametr średniej ruchomej):',min_value=0,max_value=10,step=1)
-    s = ll.number_input('Wybierz s ():',value=12,min_value=0,max_value=12,step=1)
+    s = ll.number_input('Wybierz s (parametr sezonowości):',value=12,min_value=0,max_value=12,step=1)
      
     
     ll.markdown('###')
