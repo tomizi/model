@@ -197,7 +197,7 @@ else:
     fig = go.Figure(layout =go.Layout(
     xaxis = dict(showgrid=True,title='<b>Okres', ticklabelmode="period", dtick="M1", tickformat="%b\n%",tickangle=45,tickvals=list(DF.Okres.astype('string')),
                             ticktext = DF.Okres.astype('string'),linecolor='black',tickwidth=1,tickcolor='black',ticks="outside"),
-    yaxis = dict(linecolor='black',title='<b>Ilość sprzedaży [tyś. sztuk]',tickwidth=1,tickcolor='black',ticks="outside",gridcolor='black')
+    yaxis = dict(linecolor='black',title='<b>Ilość sprzedaży',tickwidth=1,tickcolor='black',ticks="outside",gridcolor='black')
     ))
     fig.add_trace(go.Scatter(
         x = DF.Okres,
@@ -317,7 +317,7 @@ else:
     fig = go.Figure(layout =go.Layout(
     xaxis = dict(showgrid=True,title='<b>Okres', ticklabelmode="period", dtick="M1", tickformat="%b\n%",tickangle=45,tickvals=list(DF.Okres.astype('string')),
                             ticktext = DF.Okres.astype('string'),linecolor='black',tickwidth=1,tickcolor='black',ticks="outside"),
-    yaxis = dict(linecolor='black',title='<b>Ilość sprzedaży [tyś. sztuk]',tickwidth=1,tickcolor='black',ticks="outside",gridcolor='black')
+    yaxis = dict(linecolor='black',title='<b>Ilość sprzedaży',tickwidth=1,tickcolor='black',ticks="outside",gridcolor='black')
     ))
     fig.add_trace(go.Scatter(
         x = df.Okres,
@@ -346,7 +346,7 @@ else:
     RMSE=np.sqrt(MSE)
     
     st.header(':clock10: Model trendu liniowego')
-    st.subheader('Do budowy modelu urzywamy funkcji liniowej. Wykres przedstawia sprzedaż ilościową Gripexu Hot wraz z linią trendu.')
+    st.subheader('Do budowy modelu używamy funkcji liniowej. Wykres przedstawia sprzedaż ilościową Gripexu Hot wraz z linią trendu.')
     st.markdown('###')
     lc,rc = st.columns((1,3))
     
@@ -395,7 +395,7 @@ else:
     fig = go.Figure(layout =go.Layout(
     xaxis = dict(showgrid=True,title='<b>Okres', ticklabelmode="period", dtick="M1", tickformat="%b\n%",tickangle=45,tickvals=list(df.Okres.astype('string')),
                             ticktext = df.Okres.astype('string'),linecolor='black',tickwidth=1,tickcolor='black',ticks="outside"),
-    yaxis = dict(linecolor='black',title='<b>Ilość sprzedaży [tyś. sztuk]',tickwidth=1,tickcolor='black',ticks="outside",gridcolor='black')
+    yaxis = dict(linecolor='black',title='<b>Ilość sprzedaży',tickwidth=1,tickcolor='black',ticks="outside",gridcolor='black')
     ))
     fig.add_trace(go.Scatter(
         x = df.Okres,
@@ -467,7 +467,7 @@ else:
     fig = go.Figure(layout =go.Layout(
     xaxis = dict(showgrid=True,title='<b>Okres', ticklabelmode="period", dtick="M1", tickformat="%b\n%",tickangle=45,tickvals=list(df.Okres.astype('string')),
                             ticktext = df.Okres.astype('string'),linecolor='black',tickwidth=1,tickcolor='black',ticks="outside"),
-    yaxis = dict(linecolor='black',title='<b>Ilość sprzedaży [tyś. sztuk]',tickwidth=1,tickcolor='black',ticks="outside",gridcolor='black')
+    yaxis = dict(linecolor='black',title='<b>Ilość sprzedaży',tickwidth=1,tickcolor='black',ticks="outside",gridcolor='black')
     ))
     fig.add_trace(go.Scatter(
         x = df.Okres,
@@ -506,7 +506,7 @@ else:
     fig1 = go.Figure(layout =go.Layout(
     xaxis = dict(showgrid=True,tickfont=dict(size=10),title='<b>Okres', ticklabelmode="period", dtick="M1", tickformat="%b\n%",tickangle=45,tickvals=okresy[:72],
                             ticktext = okresy[:72],linecolor='black',tickwidth=1,tickcolor='black',ticks="outside"),
-    yaxis = dict(linecolor='black',title='<b>Ilość sprzedaży [tyś. sztuk]',tickwidth=1,tickcolor='black',ticks="outside",gridcolor='black',
+    yaxis = dict(linecolor='black',title='<b>Ilość sprzedaży',tickwidth=1,tickcolor='black',ticks="outside",gridcolor='black',
                 )
     ))
     fig1.add_trace(go.Scatter(
@@ -590,7 +590,7 @@ else:
     fig = go.Figure(layout =go.Layout(
     xaxis = dict(showgrid=True,title='<b>Okres', ticklabelmode="period", dtick="M1", tickformat="%b\n%",tickangle=45,tickvals=list(df.Okres.astype('string')),
                             ticktext = list(df.Okres.astype('string')),linecolor='black',tickwidth=1,tickcolor='black',ticks="outside"),
-    yaxis = dict(linecolor='black',title='<b>Ilość sprzedaży [tyś. sztuk]',tickwidth=1,tickcolor='black',ticks="outside",gridcolor='black')
+    yaxis = dict(linecolor='black',title='<b>Ilość sprzedaży',tickwidth=1,tickcolor='black',ticks="outside",gridcolor='black')
     ))
     fig.add_trace(go.Scatter(
         x = df.Okres,
@@ -633,7 +633,7 @@ else:
     fig1 = go.Figure(layout =go.Layout(
     xaxis = dict(showgrid=True,tickfont=dict(size=10),title='<b>Okres', ticklabelmode="period", dtick="M1", tickformat="%b\n%",tickangle=45,tickvals=okresy[:72],
                             ticktext = okresy[:72],linecolor='black',tickwidth=1,tickcolor='black',ticks="outside"),
-    yaxis = dict(linecolor='black',title='<b>Ilość sprzedaży [tyś. sztuk]',tickwidth=1,tickcolor='black',ticks="outside",gridcolor='black')
+    yaxis = dict(linecolor='black',title='<b>Ilość sprzedaży',tickwidth=1,tickcolor='black',ticks="outside",gridcolor='black')
     ))
     fig1.add_trace(go.Scatter(
         x = okresy[:36],
