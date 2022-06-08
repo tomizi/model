@@ -505,7 +505,7 @@ else:
     okresy = u+t[2:]
     
     fig1 = go.Figure(layout =go.Layout(
-    xaxis = dict(showgrid=True,tickfont=dict(size=10),title='<b>Okres', ticklabelmode="period", dtick="M1", tickformat="%b\n%",tickangle=45,tickvals=okresy[:72],
+    xaxis = dict(showgrid=True,tickfont=dict(size=14),title='<b>Okres', ticklabelmode="period", dtick="M1", tickformat="%b\n%",tickangle=45,tickvals=okresy[:72],
                             ticktext = okresy[:72],linecolor='black',tickwidth=1,tickcolor='black',ticks="outside"),
     yaxis = dict(linecolor='black',title='<b>Liczba sprzedaży [w sztukach]',tickwidth=1,tickcolor='black',ticks="outside",gridcolor='black',
                 )
