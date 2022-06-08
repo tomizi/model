@@ -447,27 +447,10 @@ else:
     ##arima_model = ARIMA(df.iloc[:,2],order=(p,d,q))
     ##model = arima_model.fit()
     
-    #from statsmodels.tsa.statespace.sarimax import SARIMAX
-    #sarima_model = SARIMAX(df.iloc[:,2],order=(p,d,q),seasonal_order=(p,d,q,s))
-    #model=sarima_model.fit()
+    from statsmodels.tsa.statespace.sarimax import SARIMAX
+    sarima_model = SARIMAX(df.iloc[:,2],order=(p,d,q),seasonal_order=(p,d,q,s))
+    model=sarima_model.fit()
     
-    from sktime.forecasting.arima import AutoARIMA
-    model = AutoARIMA(start_p=0,
-                  start_q=0, 
-                  max_p=15, 
-                  max_d=15, 
-                  max_q=15,
-                  start_P=0, 
-                  start_Q=0,
-                  max_P=15, 
-                  max_D=15, 
-                  max_Q=15, 
-                  sp=12,
-                  max_order=50,
-                  maxiter=100,
-                  n_jobs=-1,
-                  seasonal=True)
-    model.fit(dane.iloc[:,2])
     
     
     from sklearn.metrics import mean_absolute_error,mean_squared_error
