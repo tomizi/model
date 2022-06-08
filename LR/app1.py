@@ -375,7 +375,7 @@ else:
         for i in t:
             if i[0] == m and i[1] == r:
                 return i[2]
-    st.subheader('Przewidziana ilość sprzedaży w '+str(int(m))+'-'+str(int(r))+' to: '+str(round(model.predict([[szukaj(m,r)]])[0],0)))
+    st.subheader('Przewidziana ilość sprzedaży w '+str(int(m))+'-'+str(int(r))+' to: '+str(int(round(model.predict([[szukaj(m,r)]])[0],0))))
     
     st.markdown('---')
     
@@ -421,7 +421,7 @@ else:
             color="Black"),title='<b>Sprzedaż ilościowa Gripexu Hot - prognozy vs. rzeczywistość',title_x=0.5)
     rc.plotly_chart(fig,True)
     pred_mean = df.iloc[len(df.iloc[:,2])-k:,2].mean()
-    st.subheader('Przewidziana ilość sprzedaży w 3-2022 to: '+str(round(pred_mean,0)))
+    st.subheader('Przewidziana ilość sprzedaży w 3-2022 to: '+str(int(round(pred_mean,0))))
     st.markdown('---')
     
     st.header(':clock330: Model SARIMA')
@@ -682,7 +682,7 @@ else:
         for i in t:
             if i[0] == m and i[1] == r:
                 return i[2]
-    st.subheader('Przewidziana ilość sprzedaży w '+str(int(a1))+'-'+str(int(b1))+' to: '+str(round(tab[szukaj(a1,b1)],-1)) )
+    st.subheader('Przewidziana ilość sprzedaży w '+str(int(a1))+'-'+str(int(b1))+' to: '+str(int(round(tab[szukaj(a1,b1)],0))) )
 
     
 
