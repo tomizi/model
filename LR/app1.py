@@ -182,8 +182,8 @@ if Model == 'Uzupełnianie danych':
 
 
     lc1, rc1 = st.columns((3,3))
-    lek1 = lc1.number_input('Podaj ilość sprzedaży pierwszego leku - '+str(wybrane[0])+': ',value=0,step=100)
-    lek2 = rc1.number_input('Podaj ilość sprzedaży drugiego leku - '+str(wybrane[1])+': ',value=0,step=100)
+    lek1 = lc1.number_input('Podaj ilość sprzedaży pierwszego leku - '+str(wybrane[0])+': ',value=85000,min_value=0,step=100)
+    lek2 = rc1.number_input('Podaj ilość sprzedaży drugiego leku - '+str(wybrane[1])+': ',value=70,min_value=0,step=100)
     st.subheader(f'\t Przewidziana ilość sprzedaży GRIPEXU HOT wynosi: {Lek_pred(lek1,lek2)}')
 else:
     new_title = '<b style="font-family:sans-serif;text-align: center; color:rgb(0, 0, 180); font-size: 62px;">Istotni Statystycznie ***</p>'
